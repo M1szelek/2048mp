@@ -1,0 +1,16 @@
+CC=g++
+CFLAGS=-c -Wall
+LDFLAGS=
+SOURCES=Client.cpp ./RCF-2.0.1.100/src/RCF/RCF.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=Client
+
+all: $(SOURCES) $(EXECUTABLE)
+	
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+
