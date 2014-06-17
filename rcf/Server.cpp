@@ -109,6 +109,11 @@ class Board{
         randSpawn();
     }
 
+    /**  
+     *  Dodaje gracza do gry z nickiem podanym w argumencie.
+     *  Jesli nie ma miejsca to klient zostaje dodany jako widz.
+     */
+
     int addPlayer(const string _nick){
         Player newPlayer(_nick);
         
@@ -134,6 +139,10 @@ class Board{
         return newPlayer.id;
     }
 
+    /** 
+     *  Usuwa gracza o podanym id.
+     */
+
     void removePlayer(const int _id){
         for(int i = 0; i < players.size(); i++){
             if(players[i].id == _id){
@@ -155,6 +164,10 @@ class Board{
         }
     }
 
+    /**  
+     *  Zwraca nicki aktualnie grajacych graczy.
+     */
+
     vector<string> getNicks(){
         vector<string> res;
 
@@ -164,6 +177,10 @@ class Board{
 
         return res;
     }
+
+    /** 
+     *  Zwraca wyniki aktualnie grajacych graczy.
+     */
 
     vector<int> getScores(){
         vector<int> res;
@@ -175,13 +192,25 @@ class Board{
         return res;
     }
 
+    /** 
+     *  Zwraca ilosc grajacych.
+     */
+
     int getPlayerCount(){
         return players.size();
     }
 
+    /** 
+     *  Zwraca numer gracza, ktory ma ture.
+     */
+
     int getCurrPlayer(){
         return currplayer;
     }
+
+    /** 
+     *  Przelaczenie tury na nastepnego gracza.
+     */
 
     void switchPlayer(){
         currplayer++;
@@ -197,6 +226,10 @@ class Board{
         cout << "Current player: " << currplayer << "\tPlayer count: " << players.size() << endl;
     }
 
+    /**  
+     *  Sprawdzenie czy gracz o podanym id aktualnie ma ture.
+     */
+
     bool checkMyTurn(int _id){
         int currid = players[currplayer].id;
 
@@ -211,6 +244,10 @@ class Board{
         }
     }
 
+    /** 
+     *  Reset planszy.
+     */
+
     void reset() {
         for (int i = 0; i < board.size(); i++)
             for (int j = 0; j < board[i].size(); j++)
@@ -222,6 +259,10 @@ class Board{
 
         this->running = true;
     }
+
+    /** 
+     *  Aktualizacja wolnych pol.
+     */
 
     void updateFreeTiles() {
         freeTiles.clear();
@@ -235,6 +276,10 @@ class Board{
                 }
             }
     }
+
+    /**  
+     *  Czyszczenie pol adv na calej planszy.
+     */
     
     void clearAdv(){
         for(int i = 0; i < board.size(); i++){
@@ -243,6 +288,10 @@ class Board{
             }
         }
     }
+
+    /** 
+     *  Ruch w gore. Zwraca czy nastapil ruch.
+     */
 
     bool moveUp() {
         bool moved = true;
@@ -295,6 +344,10 @@ class Board{
         return everMoved;
     }
 
+    /** 
+     *  Ruch w dol. Zwraca czy nastapil ruch.
+     */
+
     bool moveDown() {
         bool moved = true;
         bool everMoved = false;
@@ -334,6 +387,10 @@ class Board{
         return everMoved;
     }
 
+    /** 
+     *  Ruch w lewo. Zwraca czy nastapil ruch.
+     */
+
     bool moveLeft() {
         bool moved = true;
         bool everMoved = false;
@@ -372,6 +429,10 @@ class Board{
         return everMoved;
     }
 
+    /** 
+     *  Ruch w prawo. Zwraca czy nastapil ruch.
+     */
+
     bool moveRight() {
         bool moved = true;
         bool everMoved = false;
@@ -409,6 +470,10 @@ class Board{
         return everMoved;
     }
 
+    /** 
+     *  Sprawdzenie czy nie ma wolnych pol na planszy.
+     */
+
     bool checkOccupy(){
 
         for(int i = 0; i < board.size(); i++)
@@ -420,6 +485,10 @@ class Board{
 
         return true;
     }
+
+    /** 
+     *  Sprawdza mozliwosc ruchu.
+     */
 
     bool checkMove(){
         if(!checkOccupy()){
@@ -454,6 +523,10 @@ class Board{
         return false;
     }
 
+    /** 
+     *  Sprawdza koniec gry.
+     */
+
     void checkEndGame(){
         if(!checkMove()){
             cout << "Koniec gry! Wygral " << getWinner().nick << endl;
@@ -463,6 +536,10 @@ class Board{
 
         
     }
+
+    /** 
+     *  Zwraca gracza zwyciezce.
+     */
 
     Player getWinner(){
         int best = 0;
@@ -482,6 +559,10 @@ class Board{
 //      board.get(x).set(y, val);
 //  }
 
+    /** 
+     *  Ogolna funkcja obslugujaca ruch.
+     */
+
     bool move(int dir){
         switch(dir){
             case 0: return moveUp();
@@ -493,6 +574,10 @@ class Board{
         return false;
     }
 
+    /** 
+     *  Wykonanie tury.
+     */
+
     void turn(const int dir){
         
         checkEndGame();
@@ -503,6 +588,10 @@ class Board{
         }
 
     }
+
+    /** 
+     *  Losowanie nowego numeru na planszy.
+     */
 
     void randSpawn() {
         updateFreeTiles();
@@ -527,6 +616,10 @@ class Board{
 
     }
 
+    /** 
+     *  Wyswietla plansze.
+     */
+
     void showBoard() {
         for (int i = 0; i < board.size(); i++) {
             for (int j = 0; j < board.size(); j++) {
@@ -545,6 +638,10 @@ class Board{
         
     }
 
+    /** 
+     *  Zwraca plansze.
+     */
+
     vector< vector<double> > getBoard(){
         
         vector< vector<double> > res;
@@ -560,6 +657,10 @@ class Board{
         return res;
     }
 
+    /** 
+     *  Sprawdzenie listy obecnosci.
+     */
+
     void checkPlayer(int _id){
         for(int i = 0; i < players.size(); i++){
             if(_id == players[i].id){
@@ -568,11 +669,19 @@ class Board{
         }
     }
 
+    /** 
+     *  Reset listy obecnosci.
+     */
+
     void resetChecks(){
         for(int i = 0; i < players.size(); i++){
             players[i].check = false;
         }
     }
+
+    /** 
+     *  Detekcja martwych klientow.
+     */
 
     void checkAlivePlayers(){
         while(true){

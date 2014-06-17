@@ -1,0 +1,6 @@
+digraph "Board"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Board\n|+ size\l+ board\l+ freeTiles\l+ currplayer\l+ maxplayers\l+ idcounter\l+ running\l+ quit\l+ players\l+ spectators\l|+ Board()\l+ reset()\l+ updateFreeTiles()\l+ clearAdv()\l+ moveUp()\l+ moveDown()\l+ moveLeft()\l+ moveRight()\l+ randSpawn()\l+ showBoard()\land 30 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+}

@@ -1,0 +1,437 @@
+\hypertarget{classBoard}{\section{Board Class Reference}
+\label{classBoard}\index{Board@{Board}}
+}
+
+
+Collaboration diagram for Board\-:
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}{Board} ()
+\item 
+void \hyperlink{classBoard_aaef819a8d1a10c35d9f802195802236e}{reset} ()
+\item 
+void \hyperlink{classBoard_afcd4fcf5cbe57ff612f43a3fcb9a336f}{update\-Free\-Tiles} ()
+\item 
+void \hyperlink{classBoard_a43d0ddf4bb8fb210425cb3e3d335ee91}{clear\-Adv} ()
+\item 
+void \hyperlink{classBoard_a767dee32f9ceb1f7d83bdd75e4b3564b}{move\-Up} ()
+\item 
+void \hyperlink{classBoard_a37e2291db8ee17dd063bc858e97043d4}{move\-Down} ()
+\item 
+void \hyperlink{classBoard_a331b8563869f8ddd6a086f7b254f91ba}{move\-Left} ()
+\item 
+void \hyperlink{classBoard_a9587b11000f09b594bc005f85354fa70}{move\-Right} ()
+\item 
+void \hyperlink{classBoard_a292092da6bf7e9d034a253b8badb29ec}{rand\-Spawn} ()
+\item 
+void \hyperlink{classBoard_a4c7d8fa323cbc2163d9375bbf52e8b07}{show\-Board} ()
+\item 
+\hyperlink{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}{Board} ()
+\item 
+int \hyperlink{classBoard_aa8719dadd43fede6c8e8c904c2c472a7}{add\-Player} (const string \-\_\-nick)
+\item 
+void \hyperlink{classBoard_ae9693e44c8659fe473d303ec59c8dcf2}{remove\-Player} (const int \-\_\-id)
+\item 
+vector$<$ string $>$ \hyperlink{classBoard_acb2805f463ec6811a418eeec6614159f}{get\-Nicks} ()
+\item 
+vector$<$ int $>$ \hyperlink{classBoard_a22c26cd978ed6b28a855c8233fc45bde}{get\-Scores} ()
+\item 
+int \hyperlink{classBoard_a61e7c035becfc6e8b3ae38c3e417792a}{get\-Player\-Count} ()
+\item 
+int \hyperlink{classBoard_abb55568a079fa7c9d22b87072e47a80d}{get\-Curr\-Player} ()
+\item 
+void \hyperlink{classBoard_a6443db7c16e3b023e9f0ebd106a89e2c}{switch\-Player} ()
+\item 
+bool \hyperlink{classBoard_a28379792709ccb4bc0fc1c37f1788b57}{check\-My\-Turn} (int \-\_\-id)
+\item 
+void \hyperlink{classBoard_aaef819a8d1a10c35d9f802195802236e}{reset} ()
+\item 
+void \hyperlink{classBoard_afcd4fcf5cbe57ff612f43a3fcb9a336f}{update\-Free\-Tiles} ()
+\item 
+void \hyperlink{classBoard_a43d0ddf4bb8fb210425cb3e3d335ee91}{clear\-Adv} ()
+\item 
+bool \hyperlink{classBoard_a12ed975322d7b6a9ca26cf2b465a510b}{move\-Up} ()
+\item 
+bool \hyperlink{classBoard_a60a65f6aea6073ce6140537f3999a07c}{move\-Down} ()
+\item 
+bool \hyperlink{classBoard_a1517b03dc55270808428a671ea65f16b}{move\-Left} ()
+\item 
+bool \hyperlink{classBoard_a908e8252a3ec8fd89063d3336992b265}{move\-Right} ()
+\item 
+bool \hyperlink{classBoard_ac66859886670f6412ae98fe376d1869e}{check\-Occupy} ()
+\item 
+bool \hyperlink{classBoard_afe79236d857a27b5f41135ab7d314d11}{check\-Move} ()
+\item 
+void \hyperlink{classBoard_af3e095aaddc5a5d42dbce1e9f09613ac}{check\-End\-Game} ()
+\item 
+\hyperlink{classPlayer}{Player} \hyperlink{classBoard_ab8ac6a56bc3f1d23c17091b247f4846c}{get\-Winner} ()
+\item 
+bool \hyperlink{classBoard_a8ff148a0bc62644e38fd0e4dc62e6aa8}{move} (int dir)
+\item 
+void \hyperlink{classBoard_a83efc5312ec74972d092f1feb8a634cc}{turn} (const int dir)
+\item 
+void \hyperlink{classBoard_a292092da6bf7e9d034a253b8badb29ec}{rand\-Spawn} ()
+\item 
+void \hyperlink{classBoard_a4c7d8fa323cbc2163d9375bbf52e8b07}{show\-Board} ()
+\item 
+vector$<$ vector$<$ double $>$ $>$ \hyperlink{classBoard_af9e342842a0b219ecfba8c2c9187b865}{get\-Board} ()
+\item 
+void \hyperlink{classBoard_a22e356fce939f31b3a5b37d4c6e00fdb}{check\-Player} (int \-\_\-id)
+\item 
+void \hyperlink{classBoard_ac9612f0921f8c6bcada7f00b8542cd6c}{reset\-Checks} ()
+\item 
+void \hyperlink{classBoard_a969a156e3d2f18e5474d048ac61eefec}{check\-Alive\-Players} ()
+\item 
+void \hyperlink{classBoard_a438f522b92c76c5de5e14e6ea1eebb25}{control} ()
+\item 
+void \hyperlink{classBoard_a5baa5d9c3f42b49e05864204725dd83f}{process} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classBoard_aedef7105f0accc0949b601afa97e9678}{size}
+\item 
+vector$<$ vector$<$ \hyperlink{classBlock}{Block} $>$ $>$ \hyperlink{classBoard_ab2e62f1012a8a2a0fc4e564819f30e6e}{board}
+\item 
+vector$<$ \hyperlink{classPosition}{Position} $>$ \hyperlink{classBoard_a6983fbd0c0d7d6dfad304ac48c813699}{free\-Tiles}
+\item 
+int \hyperlink{classBoard_abaa4fa9dc0aa30ff340ae3a3603bfe89}{currplayer}
+\item 
+int \hyperlink{classBoard_a74cbb7000280715ac9ba9b71cee88d7b}{maxplayers}
+\item 
+int \hyperlink{classBoard_a90bc6d3f5c2736e7ace83eff24f8ee4d}{idcounter}
+\item 
+bool \hyperlink{classBoard_ab592d001f61d16b0d272b45d36a78eeb}{running}
+\item 
+bool \hyperlink{classBoard_a932321a5ea4ff75ab3651bb465ae9236}{quit} = false
+\item 
+vector$<$ \hyperlink{classPlayer}{Player} $>$ \hyperlink{classBoard_a55e4b41d8d96b50facbcbc2996d9f1e3}{players}
+\item 
+vector$<$ \hyperlink{classPlayer}{Player} $>$ \hyperlink{classBoard_a8c9035c16d22c8db02729d4ced267132}{spectators}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}{\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\subsubsection[{Board}]{\setlength{\rightskip}{0pt plus 5cm}Board\-::\-Board (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}
+\hypertarget{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}{\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\subsubsection[{Board}]{\setlength{\rightskip}{0pt plus 5cm}Board\-::\-Board (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a9ee491d4fea680cf69b033374a9fdfcb}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBoard_aa8719dadd43fede6c8e8c904c2c472a7}{\index{Board@{Board}!add\-Player@{add\-Player}}
+\index{add\-Player@{add\-Player}!Board@{Board}}
+\subsubsection[{add\-Player}]{\setlength{\rightskip}{0pt plus 5cm}int Board\-::add\-Player (
+\begin{DoxyParamCaption}
+\item[{const string}]{\-\_\-nick}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_aa8719dadd43fede6c8e8c904c2c472a7}
+Dodaje gracza do gry z nickiem podanym w argumencie. Jesli nie ma miejsca to klient zostaje dodany jako widz. \hypertarget{classBoard_a969a156e3d2f18e5474d048ac61eefec}{\index{Board@{Board}!check\-Alive\-Players@{check\-Alive\-Players}}
+\index{check\-Alive\-Players@{check\-Alive\-Players}!Board@{Board}}
+\subsubsection[{check\-Alive\-Players}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::check\-Alive\-Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a969a156e3d2f18e5474d048ac61eefec}
+Detekcja martwych klientow. \hypertarget{classBoard_af3e095aaddc5a5d42dbce1e9f09613ac}{\index{Board@{Board}!check\-End\-Game@{check\-End\-Game}}
+\index{check\-End\-Game@{check\-End\-Game}!Board@{Board}}
+\subsubsection[{check\-End\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::check\-End\-Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_af3e095aaddc5a5d42dbce1e9f09613ac}
+Sprawdza koniec gry. \hypertarget{classBoard_afe79236d857a27b5f41135ab7d314d11}{\index{Board@{Board}!check\-Move@{check\-Move}}
+\index{check\-Move@{check\-Move}!Board@{Board}}
+\subsubsection[{check\-Move}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::check\-Move (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_afe79236d857a27b5f41135ab7d314d11}
+Sprawdza mozliwosc ruchu. \hypertarget{classBoard_a28379792709ccb4bc0fc1c37f1788b57}{\index{Board@{Board}!check\-My\-Turn@{check\-My\-Turn}}
+\index{check\-My\-Turn@{check\-My\-Turn}!Board@{Board}}
+\subsubsection[{check\-My\-Turn}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::check\-My\-Turn (
+\begin{DoxyParamCaption}
+\item[{int}]{\-\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a28379792709ccb4bc0fc1c37f1788b57}
+Sprawdzenie czy gracz o podanym id aktualnie ma ture. \hypertarget{classBoard_ac66859886670f6412ae98fe376d1869e}{\index{Board@{Board}!check\-Occupy@{check\-Occupy}}
+\index{check\-Occupy@{check\-Occupy}!Board@{Board}}
+\subsubsection[{check\-Occupy}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::check\-Occupy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_ac66859886670f6412ae98fe376d1869e}
+Sprawdzenie czy nie ma wolnych pol na planszy. \hypertarget{classBoard_a22e356fce939f31b3a5b37d4c6e00fdb}{\index{Board@{Board}!check\-Player@{check\-Player}}
+\index{check\-Player@{check\-Player}!Board@{Board}}
+\subsubsection[{check\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::check\-Player (
+\begin{DoxyParamCaption}
+\item[{int}]{\-\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a22e356fce939f31b3a5b37d4c6e00fdb}
+Sprawdzenie listy obecnosci. \hypertarget{classBoard_a43d0ddf4bb8fb210425cb3e3d335ee91}{\index{Board@{Board}!clear\-Adv@{clear\-Adv}}
+\index{clear\-Adv@{clear\-Adv}!Board@{Board}}
+\subsubsection[{clear\-Adv}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::clear\-Adv (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a43d0ddf4bb8fb210425cb3e3d335ee91}
+\hypertarget{classBoard_a43d0ddf4bb8fb210425cb3e3d335ee91}{\index{Board@{Board}!clear\-Adv@{clear\-Adv}}
+\index{clear\-Adv@{clear\-Adv}!Board@{Board}}
+\subsubsection[{clear\-Adv}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::clear\-Adv (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a43d0ddf4bb8fb210425cb3e3d335ee91}
+Czyszczenie pol adv na calej planszy. \hypertarget{classBoard_a438f522b92c76c5de5e14e6ea1eebb25}{\index{Board@{Board}!control@{control}}
+\index{control@{control}!Board@{Board}}
+\subsubsection[{control}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a438f522b92c76c5de5e14e6ea1eebb25}
+\hypertarget{classBoard_af9e342842a0b219ecfba8c2c9187b865}{\index{Board@{Board}!get\-Board@{get\-Board}}
+\index{get\-Board@{get\-Board}!Board@{Board}}
+\subsubsection[{get\-Board}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ vector$<$double$>$ $>$ Board\-::get\-Board (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_af9e342842a0b219ecfba8c2c9187b865}
+Zwraca plansze. \hypertarget{classBoard_abb55568a079fa7c9d22b87072e47a80d}{\index{Board@{Board}!get\-Curr\-Player@{get\-Curr\-Player}}
+\index{get\-Curr\-Player@{get\-Curr\-Player}!Board@{Board}}
+\subsubsection[{get\-Curr\-Player}]{\setlength{\rightskip}{0pt plus 5cm}int Board\-::get\-Curr\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_abb55568a079fa7c9d22b87072e47a80d}
+Zwraca numer gracza, ktory ma ture. \hypertarget{classBoard_acb2805f463ec6811a418eeec6614159f}{\index{Board@{Board}!get\-Nicks@{get\-Nicks}}
+\index{get\-Nicks@{get\-Nicks}!Board@{Board}}
+\subsubsection[{get\-Nicks}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ Board\-::get\-Nicks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_acb2805f463ec6811a418eeec6614159f}
+Zwraca nicki aktualnie grajacych graczy. \hypertarget{classBoard_a61e7c035becfc6e8b3ae38c3e417792a}{\index{Board@{Board}!get\-Player\-Count@{get\-Player\-Count}}
+\index{get\-Player\-Count@{get\-Player\-Count}!Board@{Board}}
+\subsubsection[{get\-Player\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int Board\-::get\-Player\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a61e7c035becfc6e8b3ae38c3e417792a}
+Zwraca ilosc grajacych. \hypertarget{classBoard_a22c26cd978ed6b28a855c8233fc45bde}{\index{Board@{Board}!get\-Scores@{get\-Scores}}
+\index{get\-Scores@{get\-Scores}!Board@{Board}}
+\subsubsection[{get\-Scores}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$int$>$ Board\-::get\-Scores (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a22c26cd978ed6b28a855c8233fc45bde}
+Zwraca wyniki aktualnie grajacych graczy. \hypertarget{classBoard_ab8ac6a56bc3f1d23c17091b247f4846c}{\index{Board@{Board}!get\-Winner@{get\-Winner}}
+\index{get\-Winner@{get\-Winner}!Board@{Board}}
+\subsubsection[{get\-Winner}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player} Board\-::get\-Winner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_ab8ac6a56bc3f1d23c17091b247f4846c}
+Zwraca gracza zwyciezce. \hypertarget{classBoard_a8ff148a0bc62644e38fd0e4dc62e6aa8}{\index{Board@{Board}!move@{move}}
+\index{move@{move}!Board@{Board}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::move (
+\begin{DoxyParamCaption}
+\item[{int}]{dir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a8ff148a0bc62644e38fd0e4dc62e6aa8}
+Ogolna funkcja obslugujaca ruch. \hypertarget{classBoard_a37e2291db8ee17dd063bc858e97043d4}{\index{Board@{Board}!move\-Down@{move\-Down}}
+\index{move\-Down@{move\-Down}!Board@{Board}}
+\subsubsection[{move\-Down}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::move\-Down (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a37e2291db8ee17dd063bc858e97043d4}
+\hypertarget{classBoard_a60a65f6aea6073ce6140537f3999a07c}{\index{Board@{Board}!move\-Down@{move\-Down}}
+\index{move\-Down@{move\-Down}!Board@{Board}}
+\subsubsection[{move\-Down}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::move\-Down (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a60a65f6aea6073ce6140537f3999a07c}
+Ruch w dol. Zwraca czy nastapil ruch. \hypertarget{classBoard_a331b8563869f8ddd6a086f7b254f91ba}{\index{Board@{Board}!move\-Left@{move\-Left}}
+\index{move\-Left@{move\-Left}!Board@{Board}}
+\subsubsection[{move\-Left}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::move\-Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a331b8563869f8ddd6a086f7b254f91ba}
+\hypertarget{classBoard_a1517b03dc55270808428a671ea65f16b}{\index{Board@{Board}!move\-Left@{move\-Left}}
+\index{move\-Left@{move\-Left}!Board@{Board}}
+\subsubsection[{move\-Left}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::move\-Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a1517b03dc55270808428a671ea65f16b}
+Ruch w lewo. Zwraca czy nastapil ruch. \hypertarget{classBoard_a9587b11000f09b594bc005f85354fa70}{\index{Board@{Board}!move\-Right@{move\-Right}}
+\index{move\-Right@{move\-Right}!Board@{Board}}
+\subsubsection[{move\-Right}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::move\-Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a9587b11000f09b594bc005f85354fa70}
+\hypertarget{classBoard_a908e8252a3ec8fd89063d3336992b265}{\index{Board@{Board}!move\-Right@{move\-Right}}
+\index{move\-Right@{move\-Right}!Board@{Board}}
+\subsubsection[{move\-Right}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::move\-Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a908e8252a3ec8fd89063d3336992b265}
+Ruch w prawo. Zwraca czy nastapil ruch. \hypertarget{classBoard_a767dee32f9ceb1f7d83bdd75e4b3564b}{\index{Board@{Board}!move\-Up@{move\-Up}}
+\index{move\-Up@{move\-Up}!Board@{Board}}
+\subsubsection[{move\-Up}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::move\-Up (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a767dee32f9ceb1f7d83bdd75e4b3564b}
+\hypertarget{classBoard_a12ed975322d7b6a9ca26cf2b465a510b}{\index{Board@{Board}!move\-Up@{move\-Up}}
+\index{move\-Up@{move\-Up}!Board@{Board}}
+\subsubsection[{move\-Up}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::move\-Up (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a12ed975322d7b6a9ca26cf2b465a510b}
+Ruch w gore. Zwraca czy nastapil ruch. \hypertarget{classBoard_a5baa5d9c3f42b49e05864204725dd83f}{\index{Board@{Board}!process@{process}}
+\index{process@{process}!Board@{Board}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::process (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a5baa5d9c3f42b49e05864204725dd83f}
+\hypertarget{classBoard_a292092da6bf7e9d034a253b8badb29ec}{\index{Board@{Board}!rand\-Spawn@{rand\-Spawn}}
+\index{rand\-Spawn@{rand\-Spawn}!Board@{Board}}
+\subsubsection[{rand\-Spawn}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::rand\-Spawn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a292092da6bf7e9d034a253b8badb29ec}
+\hypertarget{classBoard_a292092da6bf7e9d034a253b8badb29ec}{\index{Board@{Board}!rand\-Spawn@{rand\-Spawn}}
+\index{rand\-Spawn@{rand\-Spawn}!Board@{Board}}
+\subsubsection[{rand\-Spawn}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::rand\-Spawn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a292092da6bf7e9d034a253b8badb29ec}
+Losowanie nowego numeru na planszy. \hypertarget{classBoard_ae9693e44c8659fe473d303ec59c8dcf2}{\index{Board@{Board}!remove\-Player@{remove\-Player}}
+\index{remove\-Player@{remove\-Player}!Board@{Board}}
+\subsubsection[{remove\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::remove\-Player (
+\begin{DoxyParamCaption}
+\item[{const int}]{\-\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_ae9693e44c8659fe473d303ec59c8dcf2}
+Usuwa gracza o podanym id. \hypertarget{classBoard_aaef819a8d1a10c35d9f802195802236e}{\index{Board@{Board}!reset@{reset}}
+\index{reset@{reset}!Board@{Board}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_aaef819a8d1a10c35d9f802195802236e}
+\hypertarget{classBoard_aaef819a8d1a10c35d9f802195802236e}{\index{Board@{Board}!reset@{reset}}
+\index{reset@{reset}!Board@{Board}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_aaef819a8d1a10c35d9f802195802236e}
+Reset planszy. \hypertarget{classBoard_ac9612f0921f8c6bcada7f00b8542cd6c}{\index{Board@{Board}!reset\-Checks@{reset\-Checks}}
+\index{reset\-Checks@{reset\-Checks}!Board@{Board}}
+\subsubsection[{reset\-Checks}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::reset\-Checks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_ac9612f0921f8c6bcada7f00b8542cd6c}
+Reset listy obecnosci. \hypertarget{classBoard_a4c7d8fa323cbc2163d9375bbf52e8b07}{\index{Board@{Board}!show\-Board@{show\-Board}}
+\index{show\-Board@{show\-Board}!Board@{Board}}
+\subsubsection[{show\-Board}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::show\-Board (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a4c7d8fa323cbc2163d9375bbf52e8b07}
+\hypertarget{classBoard_a4c7d8fa323cbc2163d9375bbf52e8b07}{\index{Board@{Board}!show\-Board@{show\-Board}}
+\index{show\-Board@{show\-Board}!Board@{Board}}
+\subsubsection[{show\-Board}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::show\-Board (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a4c7d8fa323cbc2163d9375bbf52e8b07}
+Wyswietla plansze. \hypertarget{classBoard_a6443db7c16e3b023e9f0ebd106a89e2c}{\index{Board@{Board}!switch\-Player@{switch\-Player}}
+\index{switch\-Player@{switch\-Player}!Board@{Board}}
+\subsubsection[{switch\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::switch\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a6443db7c16e3b023e9f0ebd106a89e2c}
+Przelaczenie tury na nastepnego gracza. \hypertarget{classBoard_a83efc5312ec74972d092f1feb8a634cc}{\index{Board@{Board}!turn@{turn}}
+\index{turn@{turn}!Board@{Board}}
+\subsubsection[{turn}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::turn (
+\begin{DoxyParamCaption}
+\item[{const int}]{dir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_a83efc5312ec74972d092f1feb8a634cc}
+Wykonanie tury. \hypertarget{classBoard_afcd4fcf5cbe57ff612f43a3fcb9a336f}{\index{Board@{Board}!update\-Free\-Tiles@{update\-Free\-Tiles}}
+\index{update\-Free\-Tiles@{update\-Free\-Tiles}!Board@{Board}}
+\subsubsection[{update\-Free\-Tiles}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::update\-Free\-Tiles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_afcd4fcf5cbe57ff612f43a3fcb9a336f}
+\hypertarget{classBoard_afcd4fcf5cbe57ff612f43a3fcb9a336f}{\index{Board@{Board}!update\-Free\-Tiles@{update\-Free\-Tiles}}
+\index{update\-Free\-Tiles@{update\-Free\-Tiles}!Board@{Board}}
+\subsubsection[{update\-Free\-Tiles}]{\setlength{\rightskip}{0pt plus 5cm}void Board\-::update\-Free\-Tiles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classBoard_afcd4fcf5cbe57ff612f43a3fcb9a336f}
+Aktualizacja wolnych pol. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classBoard_ab2e62f1012a8a2a0fc4e564819f30e6e}{\index{Board@{Board}!board@{board}}
+\index{board@{board}!Board@{Board}}
+\subsubsection[{board}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ vector$<$ {\bf Block} $>$ $>$ Board\-::board}}\label{classBoard_ab2e62f1012a8a2a0fc4e564819f30e6e}
+\hypertarget{classBoard_abaa4fa9dc0aa30ff340ae3a3603bfe89}{\index{Board@{Board}!currplayer@{currplayer}}
+\index{currplayer@{currplayer}!Board@{Board}}
+\subsubsection[{currplayer}]{\setlength{\rightskip}{0pt plus 5cm}int Board\-::currplayer}}\label{classBoard_abaa4fa9dc0aa30ff340ae3a3603bfe89}
+\hypertarget{classBoard_a6983fbd0c0d7d6dfad304ac48c813699}{\index{Board@{Board}!free\-Tiles@{free\-Tiles}}
+\index{free\-Tiles@{free\-Tiles}!Board@{Board}}
+\subsubsection[{free\-Tiles}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Position} $>$ Board\-::free\-Tiles}}\label{classBoard_a6983fbd0c0d7d6dfad304ac48c813699}
+\hypertarget{classBoard_a90bc6d3f5c2736e7ace83eff24f8ee4d}{\index{Board@{Board}!idcounter@{idcounter}}
+\index{idcounter@{idcounter}!Board@{Board}}
+\subsubsection[{idcounter}]{\setlength{\rightskip}{0pt plus 5cm}int Board\-::idcounter}}\label{classBoard_a90bc6d3f5c2736e7ace83eff24f8ee4d}
+\hypertarget{classBoard_a74cbb7000280715ac9ba9b71cee88d7b}{\index{Board@{Board}!maxplayers@{maxplayers}}
+\index{maxplayers@{maxplayers}!Board@{Board}}
+\subsubsection[{maxplayers}]{\setlength{\rightskip}{0pt plus 5cm}int Board\-::maxplayers}}\label{classBoard_a74cbb7000280715ac9ba9b71cee88d7b}
+\hypertarget{classBoard_a55e4b41d8d96b50facbcbc2996d9f1e3}{\index{Board@{Board}!players@{players}}
+\index{players@{players}!Board@{Board}}
+\subsubsection[{players}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Player}$>$ Board\-::players}}\label{classBoard_a55e4b41d8d96b50facbcbc2996d9f1e3}
+\hypertarget{classBoard_a932321a5ea4ff75ab3651bb465ae9236}{\index{Board@{Board}!quit@{quit}}
+\index{quit@{quit}!Board@{Board}}
+\subsubsection[{quit}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::quit = false}}\label{classBoard_a932321a5ea4ff75ab3651bb465ae9236}
+\hypertarget{classBoard_ab592d001f61d16b0d272b45d36a78eeb}{\index{Board@{Board}!running@{running}}
+\index{running@{running}!Board@{Board}}
+\subsubsection[{running}]{\setlength{\rightskip}{0pt plus 5cm}bool Board\-::running}}\label{classBoard_ab592d001f61d16b0d272b45d36a78eeb}
+\hypertarget{classBoard_aedef7105f0accc0949b601afa97e9678}{\index{Board@{Board}!size@{size}}
+\index{size@{size}!Board@{Board}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int Board\-::size}}\label{classBoard_aedef7105f0accc0949b601afa97e9678}
+\hypertarget{classBoard_a8c9035c16d22c8db02729d4ced267132}{\index{Board@{Board}!spectators@{spectators}}
+\index{spectators@{spectators}!Board@{Board}}
+\subsubsection[{spectators}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Player}$>$ Board\-::spectators}}\label{classBoard_a8c9035c16d22c8db02729d4ced267132}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{board_8cpp}{board.\-cpp}\item 
+\hyperlink{Server_8cpp}{Server.\-cpp}\end{DoxyCompactItemize}
