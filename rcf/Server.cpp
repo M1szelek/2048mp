@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <vector>
 #include <SF/vector.hpp>
+#include <thread>
 
 using namespace std;
 
@@ -18,6 +19,8 @@ RCF_BEGIN(I_Board, "I_Board")
     RCF_METHOD_R0(int, getPlayerCount)
     RCF_METHOD_R0(int, getCurrPlayer)
 RCF_END(I_Board)
+
+
 
 class Position {
     
@@ -48,10 +51,13 @@ class Player{
         int id;
         string nick;
         int score;
+        bool empty;
+        bool check;
 
         Player(string _nick){
             this->nick = _nick;
             score = 0;
+            empty = false;
         }
 
         void setId(int val){
@@ -69,6 +75,9 @@ class Board{
 
     int idcounter;
 
+    bool running;
+    bool quit = false;
+
     vector< vector<Block> > board;
     vector<Position> freeTiles;
 
@@ -82,6 +91,8 @@ class Board{
         this->currplayer = 0;
         this->maxplayers = 4;
         this->idcounter = 0;
+
+        this->running = true;
 
         for (int i = 0; i < size; i++) {
             vector<Block> row;
@@ -101,6 +112,14 @@ class Board{
     int addPlayer(const string _nick){
         Player newPlayer(_nick);
         
+        for(int i = 0; i < players.size(); i++){
+            if(players[i].empty){
+                players[i].nick = _nick;
+                players[i].empty = false;
+                return players[i].id;
+            }
+        }
+
         if(players.size() < maxplayers){
             newPlayer.setId(idcounter);
             idcounter++;
@@ -118,8 +137,20 @@ class Board{
     void removePlayer(const int _id){
         for(int i = 0; i < players.size(); i++){
             if(players[i].id == _id){
+                //if(i == currplayer){
+                //    switchPlayer();
+                //}
+
                 cout << players[i].nick << " opuszcza gre" << endl;
-                players.erase(players.begin() + i);
+                //players.erase(players.begin() + i);
+                players[i].empty = true;
+
+                if(i == currplayer)
+                    switchPlayer();
+
+                //if(currplayer >= players.size()){
+                //   currplayer = 0;
+                //}
             }
         }
     }
@@ -159,11 +190,17 @@ class Board{
             currplayer = 0;
         }
 
+        if(players[currplayer].empty){
+            currplayer++;
+        }
+
         cout << "Current player: " << currplayer << "\tPlayer count: " << players.size() << endl;
     }
 
     bool checkMyTurn(int _id){
         int currid = players[currplayer].id;
+
+        checkPlayer(_id);
 
         //cout << currid << " " << _id << endl;
 
@@ -181,7 +218,9 @@ class Board{
 
         randSpawn();
 
-        currplayer = 0;
+        this->currplayer = 0;
+
+        this->running = true;
     }
 
     void updateFreeTiles() {
@@ -229,6 +268,7 @@ class Board{
                             //board.get(i).get(j).val = 0;
                             
                             board[i-1][j].val = neigh * 2;
+                            players[currplayer].score += neigh * 2;
                             board[i-1][j].adv = true;
                             board[i][j].val = 0;
 
@@ -272,6 +312,7 @@ class Board{
 
                         if (neigh == target) {
                             board[i+1][j].val = neigh * 2;
+                            players[currplayer].score += neigh * 2;
                             board[i+1][j].adv = true;
                             board[i][j].val = 0;
                             moved = true;
@@ -309,6 +350,7 @@ class Board{
 
                         if (neigh == target) {
                             board[i][j-1].val = neigh * 2;
+                            players[currplayer].score += neigh * 2;
                             board[i][j-1].adv = true;
                             board[i][j].val = 0;
                             moved = true;
@@ -345,6 +387,7 @@ class Board{
 
                         if (neigh == target) {
                             board[i][j+1].val = neigh * 2;
+                            players[currplayer].score += neigh * 2;
                             board[i][j+1].adv = true;
                             board[i][j].val = 0;
                             moved = true;
@@ -366,13 +409,59 @@ class Board{
         return everMoved;
     }
 
-    bool checkEndGame(){
-        //if(!moveLeft() && !moveRight() && !moveUp() && !moveDown()){
-        //    cout << "Koniec gry! Wygral " << getWinner().nick << endl;
-        //    return true;
-        //}
+    bool checkOccupy(){
+
+        for(int i = 0; i < board.size(); i++)
+            for(int j = 0; j < board.size(); j++){
+                if(board[i][j].val == 0){
+                    return false;
+                }
+            }
+
+        return true;
+    }
+
+    bool checkMove(){
+        if(!checkOccupy()){
+            return true; 
+        }
+
+        for(int i = 0; i < board.size(); i++){
+            for(int j = 0; j < board.size(); j++){
+                
+                if(i != board.size()-1)
+                if(board[i][j].val == board[i+1][j].val){
+                    return true;
+                }
+
+                if(i != 0)
+                if(board[i][j].val == board[i-1][j].val){
+                    return true;
+                }
+
+                if(j != 0)
+                if(board[i][j].val == board[i][j-1].val){
+                    return true;
+                }
+
+                if(j != board.size()-1)
+                if(board[i][j].val == board[i][j+1].val){
+                    return true;
+                }
+            }
+        }
 
         return false;
+    }
+
+    void checkEndGame(){
+        if(!checkMove()){
+            cout << "Koniec gry! Wygral " << getWinner().nick << endl;
+            this->running = false;
+            
+        }
+
+        
     }
 
     Player getWinner(){
@@ -406,7 +495,9 @@ class Board{
 
     void turn(const int dir){
         
-        if(move(dir) && !checkEndGame()){
+        checkEndGame();
+
+        if(move(dir) && this->running){
             randSpawn();
             switchPlayer();
         }
@@ -469,6 +560,57 @@ class Board{
         return res;
     }
 
+    void checkPlayer(int _id){
+        for(int i = 0; i < players.size(); i++){
+            if(_id == players[i].id){
+                players[i].check = true;
+            }
+        }
+    }
+
+    void resetChecks(){
+        for(int i = 0; i < players.size(); i++){
+            players[i].check = false;
+        }
+    }
+
+    void checkAlivePlayers(){
+        while(true){
+            RCF::sleepMs(5000);
+            //cout << players.size() << endl;
+            for(int i = 0; i < players.size(); i++){
+                if(!players[i].empty && !players[i].check){
+                    removePlayer(players[i].id);
+                }
+            }
+            resetChecks();
+
+        }
+
+
+    }
+
+    void control(){
+        char input;
+
+        while(!quit){
+            cin >> input;
+
+            switch(input){
+                case 'r': reset(); break;
+                case 'q': quit = true; break;
+            }
+        }
+    }
+
+    void process(){
+        thread th1(&Board::checkAlivePlayers, *this);
+        thread th2(&Board::control, *this);
+
+        th1.join();
+        th2.join();
+    }
+
 };
 
 
@@ -477,33 +619,38 @@ int main()
 
     RCF::RcfInitDeinit rcfInit;
 
-    //HelloWorldImpl helloWorld;
     Board board;
     RCF::RcfServer server( RCF::TcpEndpoint(50001) );
-    //server.bind<I_HelloWorld>(helloWorld);
-    server.bind<I_Board>(board);
+
+    RCF::ThreadPoolPtr tpPtr( new RCF::ThreadPool(1, 25) );
+    server.setThreadPool(tpPtr);
 
     server.start();
-    
-    //int input;
-    //bool quit;
+   
+    server.bind<I_Board>(board);
 
-   /* while(true){
+    cout << "Serwer wystartowal" << endl;
+
+    char input;
+
+    server.start();
+
+    //board.process();
+
+    board.checkAlivePlayers();
+
+    //bool quit = false;
+
+    /*while(!quit){
         cin >> input;
-        switch(input){
-            case 1: helloWorld.inc();break;
-            case 2: helloWorld.dec();break;
-            case 3: quit = true;break;
-        }
 
-        if(quit){
-            break;
+        switch(input){
+            case 'r': board.reset(); break;
+            case 'q': quit = true; break;
         }
     }*/
-
-    //std::cout << "Press Enter to exit..." << std::endl;
-    //board.showBoard();
-    std::cin.get();
+    
+    //std::cin.get();
 
     return 0;
 }

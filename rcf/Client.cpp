@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <vector>
 #include <SF/vector.hpp>
+#include <thread>
 
 using namespace std;
 
@@ -172,52 +173,166 @@ class ClientBoard{
 
 };
 
+void fun(){
+    cout << "hello" << endl;
+}
+
+bool quit = false;
+bool myTurn = false;
+
+void updateGameStatus(RcfClient<I_Board> _client, ClientBoard _board, Player _myself){
+    //while(!_client.checkMyTurn(_myself.id)){
+    //            RCF::sleepMs(500);
+    //            _board.process(_client);
+    //}
+    try{
+        while(!quit){
+                    if(_client.checkMyTurn(_myself.id)){
+                        myTurn = true;
+                    }
+                    RCF::sleepMs(500);
+                    _board.process(_client);
+        }
+    }
+    catch(const RCF::Exception & e){
+        std::cout << "Error: " << e.getErrorString() << std::endl;
+        quit = true;
+    }
+}
+
+void control(RcfClient<I_Board> _client){
+    char decision;
+    try{
+        while (!quit) {
+                
+                //while(!client.checkMyTurn(myself.id)){
+                //    RCF::sleepMs(500);
+                //    board.process(client);
+                //}
+
+                //board.process(client);
+
+
+
+                cin >> decision;
+
+                if(quit){
+                    break;
+                }
+                
+                switch (decision) {
+                case 'w':
+                    if(myTurn){
+                    _client.turn(0);
+                    myTurn = false;
+                    }
+                    break;
+                case 's':
+                    if(myTurn){
+                    _client.turn(2);
+                    myTurn = false;
+                    }
+                    break;
+                case 'a':
+                    if(myTurn){
+                    _client.turn(3);
+                    myTurn = false;
+                    }
+                    break;
+                case 'd':
+                    if(myTurn){
+                    _client.turn(1);
+                    myTurn = false;
+                    }
+                    break;
+                case 'q':
+                    quit = true;
+                }
+        }
+    }
+    catch(const RCF::Exception & e){
+        std::cout << "Error: " << e.getErrorString() << std::endl;
+        quit = true;
+    }
+
+}
+
 int main()
 {
+    //thread tr(&fun);
+    //tr.join();
+
+    string nick;
+
+    cout << "Podaj nick: ";
+    cin >> nick;
+
+
     RCF::RcfInitDeinit rcfInit;
 
     RcfClient<I_Board> client( RCF::TcpEndpoint(50001) );
 
-    Player myself("Anonim",0);
+    Player myself(nick,0);
 
     myself.setId(client.addPlayer(myself.nick));
 
     ClientBoard board;
 
     char decision;
-    bool quit = false;
-        
-    while (!quit) {
-        //board.updateBoard(client);
-        //board.showBoard();
-        
-        while(!client.checkMyTurn(myself.id)){
-            RCF::sleepMs(500);
-            board.process(client);
-        }
+    
+       
+    thread tr(&updateGameStatus, client, board, myself);
+    thread tr2(&control, client);
+    tr.join();
+    tr2.join();
 
-        board.process(client);
-
-        cin >> decision;
-        switch (decision) {
-        case 'w':
-            client.turn(0);
-            break;
-        case 's':
-            client.turn(2);
-            break;
-        case 'a':
-            client.turn(3);
-            break;
-        case 'd':
-            client.turn(1);
-            break;
-        case 'q':
-            quit = true;
-        }
+    try{
+        client.removePlayer(myself.id);
+    }
+    catch(const RCF::Exception & e){
+        std::cout << "Error: " << e.getErrorString() << std::endl;
     }
 
-    client.removePlayer(myself.id);
+    /*try{
+
+        while (!quit) {
+            
+            //while(!client.checkMyTurn(myself.id)){
+            //    RCF::sleepMs(500);
+            //    board.process(client);
+            //}
+
+            //board.process(client);
+
+
+
+            cin >> decision;
+            
+            switch (decision) {
+            case 'w':
+                client.turn(0);
+                break;
+            case 's':
+                client.turn(2);
+                break;
+            case 'a':
+                client.turn(3);
+                break;
+            case 'd':
+                client.turn(1);
+                break;
+            case 'q':
+                quit = true;
+            }
+        }
+
+        client.removePlayer(myself.id);
+
+    }
+    catch(const RCF::Exception & e)
+    {
+        std::cout << "Error: " << e.getErrorString() << std::endl;
+    }*/
 
     return 0;
 }
