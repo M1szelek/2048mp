@@ -293,46 +293,5 @@ int main()
         std::cout << "Error: " << e.getErrorString() << std::endl;
     }
 
-    /*try{
-
-        while (!quit) {
-            
-            //while(!client.checkMyTurn(myself.id)){
-            //    RCF::sleepMs(500);
-            //    board.process(client);
-            //}
-
-            //board.process(client);
-
-
-
-            cin >> decision;
-            
-            switch (decision) {
-            case 'w':
-                client.turn(0);
-                break;
-            case 's':
-                client.turn(2);
-                break;
-            case 'a':
-                client.turn(3);
-                break;
-            case 'd':
-                client.turn(1);
-                break;
-            case 'q':
-                quit = true;
-            }
-        }
-
-        client.removePlayer(myself.id);
-
-    }
-    catch(const RCF::Exception & e)
-    {
-        std::cout << "Error: " << e.getErrorString() << std::endl;
-    }*/
-
     return 0;
 }

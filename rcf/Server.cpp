@@ -145,7 +145,7 @@ class Board{
                 //players.erase(players.begin() + i);
                 players[i].empty = true;
 
-                if(i == currplayer)
+                if(i == currplayer && players.size() != 1)
                     switchPlayer();
 
                 //if(currplayer >= players.size()){
