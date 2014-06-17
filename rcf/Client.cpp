@@ -270,7 +270,7 @@ int main()
 
     RCF::RcfInitDeinit rcfInit;
 
-    RcfClient<I_Board> client( RCF::TcpEndpoint(50001) );
+    RcfClient<I_Board> client( RCF::TcpEndpoint("0.0.0.0",50001) );
 
     Player myself(nick,0);
 

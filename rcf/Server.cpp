@@ -620,7 +620,7 @@ int main()
     RCF::RcfInitDeinit rcfInit;
 
     Board board;
-    RCF::RcfServer server( RCF::TcpEndpoint(50001) );
+    RCF::RcfServer server( RCF::TcpEndpoint("0.0.0.0", 50001) );
 
     RCF::ThreadPoolPtr tpPtr( new RCF::ThreadPool(1, 25) );
     server.setThreadPool(tpPtr);
