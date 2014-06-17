@@ -7,42 +7,17 @@
 
 using namespace std;
 
-RCF_BEGIN(I_HelloWorld, "I_HelloWorld")
-    RCF_METHOD_V1(void, Print, const std::string &)
-    RCF_METHOD_V0(void, inc)
-    RCF_METHOD_V0(void, dec)
-RCF_END(I_HelloWorld)
-
 RCF_BEGIN(I_Board, "I_Board")
     RCF_METHOD_V1(void, turn, const int &)
     RCF_METHOD_R0(vector< vector<double> >, getBoard)
     RCF_METHOD_R1(int, addPlayer, const string &)
     RCF_METHOD_V1(void, removePlayer, const int &)
     RCF_METHOD_R1(bool, checkMyTurn, const int &)
+    RCF_METHOD_R0(vector<string>, getNicks)
+    RCF_METHOD_R0(vector<int>, getScores)
+    RCF_METHOD_R0(int, getPlayerCount)
+    RCF_METHOD_R0(int, getCurrPlayer)
 RCF_END(I_Board)
-
-class HelloWorldImpl
-{
-public:
-
-    int counter;
-
-    HelloWorldImpl():counter(0){}
-
-    void Print(const std::string & s)
-    {
-        std::cout << "I_HelloWorld service: " << s << std::endl;
-        cout << "Counter: " << counter << endl;
-    }
-
-    void inc(){
-        counter++;
-    }
-
-    void dec(){
-        counter--;
-    }
-};
 
 class Position {
     
@@ -126,7 +101,7 @@ class Board{
     int addPlayer(const string _nick){
         Player newPlayer(_nick);
         
-        if(players.size() <= 4){
+        if(players.size() < maxplayers){
             newPlayer.setId(idcounter);
             idcounter++;
             players.push_back(newPlayer);
@@ -149,18 +124,48 @@ class Board{
         }
     }
 
+    vector<string> getNicks(){
+        vector<string> res;
+
+        for(int i = 0; i < players.size(); i++){
+            res.push_back(players[i].nick);
+        }
+
+        return res;
+    }
+
+    vector<int> getScores(){
+        vector<int> res;
+
+        for(int i = 0; i < players.size(); i++){
+            res.push_back(players[i].score);
+        }
+
+        return res;
+    }
+
+    int getPlayerCount(){
+        return players.size();
+    }
+
+    int getCurrPlayer(){
+        return currplayer;
+    }
+
     void switchPlayer(){
         currplayer++;
 
         if(currplayer == players.size()){
             currplayer = 0;
         }
+
+        cout << "Current player: " << currplayer << "\tPlayer count: " << players.size() << endl;
     }
 
     bool checkMyTurn(int _id){
         int currid = players[currplayer].id;
 
-        cout << currid << " " << _id << endl;
+        //cout << currid << " " << _id << endl;
 
         if(_id == currid){
             return true;
@@ -175,6 +180,8 @@ class Board{
                 board[i][j].val = 0;
 
         randSpawn();
+
+        currplayer = 0;
     }
 
     void updateFreeTiles() {
@@ -359,6 +366,29 @@ class Board{
         return everMoved;
     }
 
+    bool checkEndGame(){
+        //if(!moveLeft() && !moveRight() && !moveUp() && !moveDown()){
+        //    cout << "Koniec gry! Wygral " << getWinner().nick << endl;
+        //    return true;
+        //}
+
+        return false;
+    }
+
+    Player getWinner(){
+        int best = 0;
+        Player winner("winner");
+
+        for(int i = 0; i < players.size(); i++){
+            if(players[i].score > best){
+                best = players[i].score;
+                winner = players[i];
+            }
+        }
+
+        return winner;
+    }
+
 //  void spawn(int x, int y, int val) {
 //      board.get(x).set(y, val);
 //  }
@@ -375,7 +405,8 @@ class Board{
     }
 
     void turn(const int dir){
-        if(move(dir)){
+        
+        if(move(dir) && !checkEndGame()){
             randSpawn();
             switchPlayer();
         }

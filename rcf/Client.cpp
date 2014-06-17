@@ -7,19 +7,18 @@
 
 using namespace std;
 
-RCF_BEGIN(I_HelloWorld, "I_HelloWorld")
-    RCF_METHOD_V1(void, Print, const std::string &)
-    RCF_METHOD_V0(void, inc)
-    RCF_METHOD_V0(void, dec)
-RCF_END(I_HelloWorld)
-
 RCF_BEGIN(I_Board, "I_Board")
     RCF_METHOD_V1(void, turn, const int &)
     RCF_METHOD_R0(vector< vector<double> >, getBoard)
     RCF_METHOD_R1(int, addPlayer, const string &)
     RCF_METHOD_V1(void, removePlayer, const int &)
     RCF_METHOD_R1(bool, checkMyTurn, const int &)
+    RCF_METHOD_R0(vector<string>, getNicks)
+    RCF_METHOD_R0(vector<int>, getScores)
+    RCF_METHOD_R0(int, getPlayerCount)
+    RCF_METHOD_R0(int, getCurrPlayer)
 RCF_END(I_Board)
+
 
 class Position {
     
@@ -51,9 +50,9 @@ class Player{
         string nick;
         int score;
 
-        Player(string _nick){
+        Player(string _nick, int _score){
             this->nick = _nick;
-            score = 0;
+            this->score = _score;
         }
 
         void setId(int val){
@@ -65,9 +64,12 @@ class ClientBoard{
     public:
 
     int size;
+    int currplayer;
 
     vector< vector<Block> > board;
     vector<Position> freeTiles;
+
+    vector<Player> players;
 
     ClientBoard(){
 
@@ -84,6 +86,11 @@ class ClientBoard{
             board.push_back(row);
 
         }
+    }
+
+    void render(){
+        showBoard();
+        showPlayers();
     }
 
     void showBoard() {
@@ -105,6 +112,18 @@ class ClientBoard{
         //cout << "--------------------" << endl;
 
         
+    }
+
+    void showPlayers(){
+        cout << endl;
+
+        for(int i = 0; i < players.size(); i++){
+            if(currplayer == i){
+                cout << players[i].nick << ":\t" << players[i].score << " <<<" << endl;
+            }else{
+                cout << players[i].nick << ":\t" << players[i].score << endl;
+            }
+        }
     }
 
     vector< vector<double> > getBoard(){
@@ -130,21 +149,38 @@ class ClientBoard{
                 this->board[i][j].val = newBoard[i][j];
     }
 
+    void updatePlayers(RcfClient<I_Board> _client){
+        
+        players.clear();
+
+        vector<string> nicks = _client.getNicks();
+        vector<int> scores = _client.getScores();
+        int count = _client.getPlayerCount();
+        this->currplayer = _client.getCurrPlayer();
+
+        for(int i = 0; i < count; i++){
+            Player _player(nicks[i],scores[i]);
+            players.push_back(_player);
+        }
+    }
+
+    void process(RcfClient<I_Board> _client){
+        this->updateBoard(_client);
+        this->updatePlayers(_client);
+        this->render(); 
+    }
+
 };
 
 int main()
 {
     RCF::RcfInitDeinit rcfInit;
 
-    string nick = "Anonim";
-
-    //std::cout << "Calling the I_HelloWorld Print() method." << std::endl;
-    //RcfClient<I_HelloWorld> client( RCF::TcpEndpoint(50001) );
     RcfClient<I_Board> client( RCF::TcpEndpoint(50001) );
 
-    Player myself(nick);
+    Player myself("Anonim",0);
 
-    myself.setId(client.addPlayer(nick));
+    myself.setId(client.addPlayer(myself.nick));
 
     ClientBoard board;
 
@@ -157,12 +193,10 @@ int main()
         
         while(!client.checkMyTurn(myself.id)){
             RCF::sleepMs(500);
-            board.updateBoard(client);
-            board.showBoard();  
+            board.process(client);
         }
 
-        board.updateBoard(client);
-        board.showBoard();
+        board.process(client);
 
         cin >> decision;
         switch (decision) {
@@ -184,26 +218,6 @@ int main()
     }
 
     client.removePlayer(myself.id);
-    
-
-    /*bool quit = false;
-
-    client.inc();
-    client.Print("Player join the server");
-
-    while(true){	
-
-    	cin >> input;
-    	
-    	if(input.compare("q") == 0){
-    		client.Print("Player quitted");
-    		break;
-    	}
-
-    	client.Print(input);
-    }
-
-    client.dec();*/
 
     return 0;
 }
