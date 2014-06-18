@@ -116,7 +116,8 @@ class Board{
 
     int addPlayer(const string _nick){
         Player newPlayer(_nick);
-        
+    
+
         for(int i = 0; i < players.size(); i++){
             if(players[i].empty){
                 players[i].nick = _nick;
@@ -219,8 +220,12 @@ class Board{
             currplayer = 0;
         }
 
-        if(players[currplayer].empty){
+        while(players[currplayer].empty){
             currplayer++;
+        }
+
+        if(currplayer >= players.size()){
+            currplayer = 0;
         }
 
         cout << "Current player: " << currplayer << "\tPlayer count: " << players.size() << endl;
