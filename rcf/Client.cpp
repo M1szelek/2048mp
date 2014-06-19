@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #include <RCF/RCF.hpp>
 #include <cstdlib>
@@ -262,6 +263,23 @@ int main()
     //thread tr(&fun);
     //tr.join();
 
+    ifstream myReadFile;
+    myReadFile.open("config");
+    char output[100];
+    if (myReadFile.is_open()) {
+        while (!myReadFile.eof()) {
+
+
+        myReadFile >> output;
+        //cout<<output;
+
+
+        }
+    }
+    myReadFile.close();
+
+    cout << output << endl;
+
     string nick;
 
     cout << "Podaj nick: ";
@@ -270,11 +288,21 @@ int main()
 
     RCF::RcfInitDeinit rcfInit;
 
-    RcfClient<I_Board> client( RCF::TcpEndpoint("0.0.0.0",50001) );
+    RcfClient<I_Board> client( RCF::TcpEndpoint(output,50001) );
+
+    // 5 second timeout when establishing network connection.
+    client.getClientStub().setConnectTimeoutMs(5*1000);
+
+    // 60 second timeout when waiting for remote call response from the server.
+    client.getClientStub().setRemoteCallTimeoutMs(60*1000);
 
     Player myself(nick,0);
 
-    myself.setId(client.addPlayer(myself.nick));
+    try{
+        myself.setId(client.addPlayer(myself.nick));
+    }catch(const RCF::Exception & e){
+        cout << "Nie mozna polaczyc sie z serwerem." << endl;
+    }
 
     ClientBoard board;
 
