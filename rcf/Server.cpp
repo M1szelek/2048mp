@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <vector>
 #include <SF/vector.hpp>
-#include <thread>
 
 using namespace std;
 
@@ -714,27 +713,6 @@ class ModelServer: public Model{
 
     }
 
-    /*void control(){
-        char input;
-
-        while(!quit){
-            cin >> input;
-
-            switch(input){
-                case 'r': reset(); break;
-                case 'q': quit = true; break;
-            }
-        }
-    }
-
-    void process(){
-        thread th1(&Model::checkAlivePlayers, *this);
-        thread th2(&Model::control, *this);
-
-        th1.join();
-        th2.join();
-    }*/
-
 };
 
 
@@ -755,26 +733,9 @@ int main()
 
     cout << "Serwer wystartowal" << endl;
 
-    //char input;
-
     server.start();
 
-    //Model.process();
-
     model.checkAlivePlayers();
-
-    //bool quit = false;
-
-    /*while(!quit){
-        cin >> input;
-
-        switch(input){
-            case 'r': Model.reset(); break;
-            case 'q': quit = true; break;
-        }
-    }*/
-    
-    //std::cin.get();
 
     return 0;
 }
