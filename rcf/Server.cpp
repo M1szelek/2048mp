@@ -8,7 +8,7 @@
 
 using namespace std;
 
-RCF_BEGIN(I_Board, "I_Board")
+RCF_BEGIN(I_Model, "I_Model")
     RCF_METHOD_V1(void, turn, const int &)
     RCF_METHOD_R0(vector< vector<double> >, getBoard)
     RCF_METHOD_R1(int, addPlayer, const string &)
@@ -18,7 +18,7 @@ RCF_BEGIN(I_Board, "I_Board")
     RCF_METHOD_R0(vector<int>, getScores)
     RCF_METHOD_R0(int, getPlayerCount)
     RCF_METHOD_R0(int, getCurrPlayer)
-RCF_END(I_Board)
+RCF_END(I_Model)
 
 
 
@@ -65,7 +65,7 @@ class Player{
         }
 };
 
-class Board{
+class Model{
     public:
 
     int size;
@@ -83,8 +83,12 @@ class Board{
 
     vector<Player> players;
     vector<Player> spectators;
+};
 
-    Board(){
+class ModelServer: public Model{
+    public:
+
+    ModelServer(){
         srand(time(NULL));
         this->size = 4;
 
@@ -120,8 +124,14 @@ class Board{
 
         for(int i = 0; i < players.size(); i++){
             if(players[i].empty){
-                players[i].nick = _nick;
-                players[i].empty = false;
+                if(_nick == players[i].nick){
+                    players[i].empty = false;
+                    cout << players[i].nick << " powraca do gry" << endl;
+                }else{
+                    players[i].nick = _nick;
+                    players[i].empty = false;
+                    cout << newPlayer.nick << " dolacza do gry" << endl;
+                }
                 return players[i].id;
             }
         }
@@ -625,7 +635,7 @@ class Board{
      *  Wyswietla plansze.
      */
 
-    void showBoard() {
+    void showboard() {
         for (int i = 0; i < board.size(); i++) {
             for (int j = 0; j < board.size(); j++) {
                 //System.out.print(board.get(i).get(j).val + "\t");
@@ -704,7 +714,7 @@ class Board{
 
     }
 
-    void control(){
+    /*void control(){
         char input;
 
         while(!quit){
@@ -718,12 +728,12 @@ class Board{
     }
 
     void process(){
-        thread th1(&Board::checkAlivePlayers, *this);
-        thread th2(&Board::control, *this);
+        thread th1(&Model::checkAlivePlayers, *this);
+        thread th2(&Model::control, *this);
 
         th1.join();
         th2.join();
-    }
+    }*/
 
 };
 
@@ -733,7 +743,7 @@ int main()
 
     RCF::RcfInitDeinit rcfInit;
 
-    Board board;
+    ModelServer model;
     RCF::RcfServer server( RCF::TcpEndpoint("0.0.0.0", 50001) );
 
     RCF::ThreadPoolPtr tpPtr( new RCF::ThreadPool(1, 25) );
@@ -741,17 +751,17 @@ int main()
 
     server.start();
    
-    server.bind<I_Board>(board);
+    server.bind<I_Model>(model);
 
     cout << "Serwer wystartowal" << endl;
 
-    char input;
+    //char input;
 
     server.start();
 
-    //board.process();
+    //Model.process();
 
-    board.checkAlivePlayers();
+    model.checkAlivePlayers();
 
     //bool quit = false;
 
@@ -759,7 +769,7 @@ int main()
         cin >> input;
 
         switch(input){
-            case 'r': board.reset(); break;
+            case 'r': Model.reset(); break;
             case 'q': quit = true; break;
         }
     }*/

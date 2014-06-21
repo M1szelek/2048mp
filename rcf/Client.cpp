@@ -9,7 +9,7 @@
 
 using namespace std;
 
-RCF_BEGIN(I_Board, "I_Board")
+RCF_BEGIN(I_Model, "I_Model")
     RCF_METHOD_V1(void, turn, const int &)
     RCF_METHOD_R0(vector< vector<double> >, getBoard)
     RCF_METHOD_R1(int, addPlayer, const string &)
@@ -19,8 +19,7 @@ RCF_BEGIN(I_Board, "I_Board")
     RCF_METHOD_R0(vector<int>, getScores)
     RCF_METHOD_R0(int, getPlayerCount)
     RCF_METHOD_R0(int, getCurrPlayer)
-RCF_END(I_Board)
-
+RCF_END(I_Model)
 
 class Position {
     
@@ -62,18 +61,31 @@ class Player{
         }
 };
 
-class ClientBoard{
+class Model{
     public:
 
     int size;
+
     int currplayer;
+    int maxplayers;
+
+    int idcounter;
+
+    bool running;
+    bool quit = false;
 
     vector< vector<Block> > board;
     vector<Position> freeTiles;
 
     vector<Player> players;
+    vector<Player> spectators;
 
-    ClientBoard(){
+};
+
+class ClientModel: public Model{
+    public:
+
+    ClientModel(){
 
         this->size = 4;
 
@@ -100,7 +112,7 @@ class ClientBoard{
 
         for (int i = 0; i < board.size(); i++) {
             for (int j = 0; j < board.size(); j++) {
-                //System.out.print(board.get(i).get(j).val + "\t");
+                //System.out.print(Model.get(i).get(j).val + "\t");
                 if(board[i][j].val != 0){
                     cout << board[i][j].val << "\t";
                 }else{
@@ -143,7 +155,7 @@ class ClientBoard{
         return res;
     }
 
-    void updateBoard(RcfClient<I_Board> _client){
+    void updateBoard(RcfClient<I_Model> _client){
         vector< vector<double> > newBoard = _client.getBoard(); 
 
         for(int i = 0; i < board.size(); i++)
@@ -151,7 +163,7 @@ class ClientBoard{
                 this->board[i][j].val = newBoard[i][j];
     }
 
-    void updatePlayers(RcfClient<I_Board> _client){
+    void updatePlayers(RcfClient<I_Model> _client){
         
         players.clear();
 
@@ -166,7 +178,7 @@ class ClientBoard{
         }
     }
 
-    void process(RcfClient<I_Board> _client){
+    void process(RcfClient<I_Model> _client){
         this->updateBoard(_client);
         this->updatePlayers(_client);
         this->render(); 
@@ -174,17 +186,13 @@ class ClientBoard{
 
 };
 
-void fun(){
-    cout << "hello" << endl;
-}
-
 bool quit = false;
 bool myTurn = false;
 
-void updateGameStatus(RcfClient<I_Board> _client, ClientBoard _board, Player _myself){
+void updateGameStatus(RcfClient<I_Model> _client, ClientModel _Model, Player _myself){
     //while(!_client.checkMyTurn(_myself.id)){
     //            RCF::sleepMs(500);
-    //            _board.process(_client);
+    //            _Model.process(_client);
     //}
     try{
         while(!quit){
@@ -192,7 +200,7 @@ void updateGameStatus(RcfClient<I_Board> _client, ClientBoard _board, Player _my
                         myTurn = true;
                     }
                     RCF::sleepMs(500);
-                    _board.process(_client);
+                    _Model.process(_client);
         }
     }
     catch(const RCF::Exception & e){
@@ -201,17 +209,17 @@ void updateGameStatus(RcfClient<I_Board> _client, ClientBoard _board, Player _my
     }
 }
 
-void control(RcfClient<I_Board> _client){
+void control(RcfClient<I_Model> _client){
     char decision;
     try{
         while (!quit) {
                 
                 //while(!client.checkMyTurn(myself.id)){
                 //    RCF::sleepMs(500);
-                //    board.process(client);
+                //    Model.process(client);
                 //}
 
-                //board.process(client);
+                //Model.process(client);
 
 
 
@@ -288,8 +296,8 @@ int main()
 
     RCF::RcfInitDeinit rcfInit;
 
-    RcfClient<I_Board> client_send( RCF::TcpEndpoint(output,50001) );
-    RcfClient<I_Board> client_recv( RCF::TcpEndpoint(output,50001) );
+    RcfClient<I_Model> client_send( RCF::TcpEndpoint(output,50001) );
+    RcfClient<I_Model> client_recv( RCF::TcpEndpoint(output,50001) );
 
     // 5 second timeout when establishing network connection.
     client_send.getClientStub().setConnectTimeoutMs(5*1000);
@@ -297,7 +305,7 @@ int main()
 
     // 60 second timeout when waiting for remote call response from the server.
     client_send.getClientStub().setRemoteCallTimeoutMs(60*1000);
-    client_recv.getClientStub().setConnectTimeoutMs(5*1000);
+    client_recv.getClientStub().setRemoteCallTimeoutMs(60*1000);
 
     Player myself(nick,0);
 
@@ -305,14 +313,15 @@ int main()
         myself.setId(client_send.addPlayer(myself.nick));
     }catch(const RCF::Exception & e){
         cout << "Nie mozna polaczyc sie z serwerem." << endl;
+        return 0;
     }
 
-    ClientBoard board;
+    ClientModel model;
 
     char decision;
     
        
-    thread tr(&updateGameStatus, client_send, board, myself);
+    thread tr(&updateGameStatus, client_send, model, myself);
     thread tr2(&control, client_recv);
     tr.join();
     tr2.join();
