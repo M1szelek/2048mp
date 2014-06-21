@@ -288,18 +288,21 @@ int main()
 
     RCF::RcfInitDeinit rcfInit;
 
-    RcfClient<I_Board> client( RCF::TcpEndpoint(output,50001) );
+    RcfClient<I_Board> client_send( RCF::TcpEndpoint(output,50001) );
+    RcfClient<I_Board> client_recv( RCF::TcpEndpoint(output,50001) );
 
     // 5 second timeout when establishing network connection.
-    client.getClientStub().setConnectTimeoutMs(5*1000);
+    client_send.getClientStub().setConnectTimeoutMs(5*1000);
+    client_recv.getClientStub().setConnectTimeoutMs(5*1000);
 
     // 60 second timeout when waiting for remote call response from the server.
-    client.getClientStub().setRemoteCallTimeoutMs(60*1000);
+    client_send.getClientStub().setRemoteCallTimeoutMs(60*1000);
+    client_recv.getClientStub().setConnectTimeoutMs(5*1000);
 
     Player myself(nick,0);
 
     try{
-        myself.setId(client.addPlayer(myself.nick));
+        myself.setId(client_send.addPlayer(myself.nick));
     }catch(const RCF::Exception & e){
         cout << "Nie mozna polaczyc sie z serwerem." << endl;
     }
@@ -309,13 +312,13 @@ int main()
     char decision;
     
        
-    thread tr(&updateGameStatus, client, board, myself);
-    thread tr2(&control, client);
+    thread tr(&updateGameStatus, client_send, board, myself);
+    thread tr2(&control, client_recv);
     tr.join();
     tr2.join();
 
     try{
-        client.removePlayer(myself.id);
+        client_send.removePlayer(myself.id);
     }
     catch(const RCF::Exception & e){
         std::cout << "Error: " << e.getErrorString() << std::endl;
