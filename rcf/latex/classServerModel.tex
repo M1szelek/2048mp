@@ -1,0 +1,276 @@
+\hypertarget{classServerModel}{\section{Server\-Model Class Reference}
+\label{classServerModel}\index{Server\-Model@{Server\-Model}}
+}
+Inheritance diagram for Server\-Model\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classServerModel}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classServerModel_a8002df80f7319f9cc726ecf6f1cb295e}{add\-Player} (const string \-\_\-nick)
+\item 
+void \hyperlink{classServerModel_a03636f686c14d807e5f8e7527b4f3eca}{remove\-Player} (const int \-\_\-id)
+\item 
+vector$<$ string $>$ \hyperlink{classServerModel_abd04bc42130f10b6fcf9f6ff96441fe7}{get\-Nicks} ()
+\item 
+vector$<$ int $>$ \hyperlink{classServerModel_a42da33b42e600dfe892509a3e1f04fb0}{get\-Scores} ()
+\item 
+int \hyperlink{classServerModel_a53887668e0e8193fb345710d76dd12b7}{get\-Player\-Count} ()
+\item 
+int \hyperlink{classServerModel_a02e91f06a02510759b370eefbcb52061}{get\-Curr\-Player} ()
+\item 
+void \hyperlink{classServerModel_af98c5669849c1d648b6103fda3f4a10c}{switch\-Player} ()
+\item 
+bool \hyperlink{classServerModel_ab4cf786672a46e6285eb72907005ae64}{check\-My\-Turn} (int \-\_\-id)
+\item 
+void \hyperlink{classServerModel_a5ccabb0400aff1109578dacfc1162af4}{reset} ()
+\item 
+void \hyperlink{classServerModel_a7b17b497feec14ba4ea7746f17b479e9}{reset\-Scores} ()
+\item 
+void \hyperlink{classServerModel_a277375b608707d6f6c308f4a8af2e1b7}{update\-Free\-Tiles} ()
+\item 
+void \hyperlink{classServerModel_ad3b7678f205acbf9a6efe65ba60cfd73}{clear\-Adv} ()
+\item 
+bool \hyperlink{classServerModel_a71bd99e883342592c9f9842c63503044}{move\-Up} ()
+\item 
+bool \hyperlink{classServerModel_ac12b01ceb25260cee42e4b2f6c5afa00}{move\-Down} ()
+\item 
+bool \hyperlink{classServerModel_a3d33c6ca6db221fb38b12ddcd1b973d7}{move\-Left} ()
+\item 
+bool \hyperlink{classServerModel_a12a3fcd85eda6068b85401f398ba567f}{move\-Right} ()
+\item 
+bool \hyperlink{classServerModel_addd72dd4e20c62633121da9e75907cf0}{check\-Occupy} ()
+\item 
+bool \hyperlink{classServerModel_acb1a12dd3af4d4ae84ce6a76742bc5b0}{check\-Move} ()
+\item 
+void \hyperlink{classServerModel_a0f9e52d858f03acff61df4ec297fbc87}{check\-End\-Game} ()
+\item 
+\hyperlink{classPlayer}{Player} \hyperlink{classServerModel_a7b23bfe191a3f618f260c781e5306e57}{get\-Winner} ()
+\item 
+bool \hyperlink{classServerModel_a2ed41cae52af16d5410b0669cce5fc7a}{move} (int dir)
+\item 
+void \hyperlink{classServerModel_a84fbe35ac950f1b71da800e14ac85814}{turn} (const int dir)
+\item 
+void \hyperlink{classServerModel_a30ce9865dba626f3aca22e6355d45a79}{rand\-Spawn} ()
+\item 
+void \hyperlink{classServerModel_a8f187ffda03256f2aa2679b22399d8ed}{showboard} ()
+\item 
+vector$<$ vector$<$ double $>$ $>$ \hyperlink{classServerModel_a0cdcac1cfe266b4fdaf9b0251a6f6553}{get\-Board} ()
+\item 
+void \hyperlink{classServerModel_a155230e9bb8373cfe4eaedbb87b05c0c}{check\-Player} (int \-\_\-id)
+\item 
+void \hyperlink{classServerModel_a402b44d30f2b3207154a67db4c28982f}{reset\-Checks} ()
+\item 
+void \hyperlink{classServerModel_aedccd8017caa1e8a9ed5a323d19d424e}{check\-Alive\-Players} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Klasa modelu serwera 
+
+\subsection{Member Function Documentation}
+\hypertarget{classServerModel_a8002df80f7319f9cc726ecf6f1cb295e}{\index{Server\-Model@{Server\-Model}!add\-Player@{add\-Player}}
+\index{add\-Player@{add\-Player}!ServerModel@{Server\-Model}}
+\subsubsection[{add\-Player}]{\setlength{\rightskip}{0pt plus 5cm}int Server\-Model\-::add\-Player (
+\begin{DoxyParamCaption}
+\item[{const string}]{\-\_\-nick}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a8002df80f7319f9cc726ecf6f1cb295e}
+Dodaje gracza do gry z nickiem podanym w argumencie. Jesli nie ma miejsca to klient zostaje dodany jako widz. \hypertarget{classServerModel_aedccd8017caa1e8a9ed5a323d19d424e}{\index{Server\-Model@{Server\-Model}!check\-Alive\-Players@{check\-Alive\-Players}}
+\index{check\-Alive\-Players@{check\-Alive\-Players}!ServerModel@{Server\-Model}}
+\subsubsection[{check\-Alive\-Players}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::check\-Alive\-Players (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_aedccd8017caa1e8a9ed5a323d19d424e}
+Detekcja martwych klientow. \hypertarget{classServerModel_a0f9e52d858f03acff61df4ec297fbc87}{\index{Server\-Model@{Server\-Model}!check\-End\-Game@{check\-End\-Game}}
+\index{check\-End\-Game@{check\-End\-Game}!ServerModel@{Server\-Model}}
+\subsubsection[{check\-End\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::check\-End\-Game (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a0f9e52d858f03acff61df4ec297fbc87}
+Sprawdza koniec gry. \hypertarget{classServerModel_acb1a12dd3af4d4ae84ce6a76742bc5b0}{\index{Server\-Model@{Server\-Model}!check\-Move@{check\-Move}}
+\index{check\-Move@{check\-Move}!ServerModel@{Server\-Model}}
+\subsubsection[{check\-Move}]{\setlength{\rightskip}{0pt plus 5cm}bool Server\-Model\-::check\-Move (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_acb1a12dd3af4d4ae84ce6a76742bc5b0}
+Sprawdza mozliwosc ruchu. \hypertarget{classServerModel_ab4cf786672a46e6285eb72907005ae64}{\index{Server\-Model@{Server\-Model}!check\-My\-Turn@{check\-My\-Turn}}
+\index{check\-My\-Turn@{check\-My\-Turn}!ServerModel@{Server\-Model}}
+\subsubsection[{check\-My\-Turn}]{\setlength{\rightskip}{0pt plus 5cm}bool Server\-Model\-::check\-My\-Turn (
+\begin{DoxyParamCaption}
+\item[{int}]{\-\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_ab4cf786672a46e6285eb72907005ae64}
+Sprawdzenie czy gracz o podanym id aktualnie ma ture. \hypertarget{classServerModel_addd72dd4e20c62633121da9e75907cf0}{\index{Server\-Model@{Server\-Model}!check\-Occupy@{check\-Occupy}}
+\index{check\-Occupy@{check\-Occupy}!ServerModel@{Server\-Model}}
+\subsubsection[{check\-Occupy}]{\setlength{\rightskip}{0pt plus 5cm}bool Server\-Model\-::check\-Occupy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_addd72dd4e20c62633121da9e75907cf0}
+Sprawdzenie czy nie ma wolnych pol na planszy. \hypertarget{classServerModel_a155230e9bb8373cfe4eaedbb87b05c0c}{\index{Server\-Model@{Server\-Model}!check\-Player@{check\-Player}}
+\index{check\-Player@{check\-Player}!ServerModel@{Server\-Model}}
+\subsubsection[{check\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::check\-Player (
+\begin{DoxyParamCaption}
+\item[{int}]{\-\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a155230e9bb8373cfe4eaedbb87b05c0c}
+Sprawdzenie listy obecnosci. \hypertarget{classServerModel_ad3b7678f205acbf9a6efe65ba60cfd73}{\index{Server\-Model@{Server\-Model}!clear\-Adv@{clear\-Adv}}
+\index{clear\-Adv@{clear\-Adv}!ServerModel@{Server\-Model}}
+\subsubsection[{clear\-Adv}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::clear\-Adv (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_ad3b7678f205acbf9a6efe65ba60cfd73}
+Czyszczenie pol adv na calej planszy. \hypertarget{classServerModel_a0cdcac1cfe266b4fdaf9b0251a6f6553}{\index{Server\-Model@{Server\-Model}!get\-Board@{get\-Board}}
+\index{get\-Board@{get\-Board}!ServerModel@{Server\-Model}}
+\subsubsection[{get\-Board}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ vector$<$double$>$ $>$ Server\-Model\-::get\-Board (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a0cdcac1cfe266b4fdaf9b0251a6f6553}
+Zwraca plansze. \hypertarget{classServerModel_a02e91f06a02510759b370eefbcb52061}{\index{Server\-Model@{Server\-Model}!get\-Curr\-Player@{get\-Curr\-Player}}
+\index{get\-Curr\-Player@{get\-Curr\-Player}!ServerModel@{Server\-Model}}
+\subsubsection[{get\-Curr\-Player}]{\setlength{\rightskip}{0pt plus 5cm}int Server\-Model\-::get\-Curr\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a02e91f06a02510759b370eefbcb52061}
+Zwraca numer gracza, ktory ma ture. \hypertarget{classServerModel_abd04bc42130f10b6fcf9f6ff96441fe7}{\index{Server\-Model@{Server\-Model}!get\-Nicks@{get\-Nicks}}
+\index{get\-Nicks@{get\-Nicks}!ServerModel@{Server\-Model}}
+\subsubsection[{get\-Nicks}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ Server\-Model\-::get\-Nicks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_abd04bc42130f10b6fcf9f6ff96441fe7}
+Zwraca nicki aktualnie grajacych graczy. \hypertarget{classServerModel_a53887668e0e8193fb345710d76dd12b7}{\index{Server\-Model@{Server\-Model}!get\-Player\-Count@{get\-Player\-Count}}
+\index{get\-Player\-Count@{get\-Player\-Count}!ServerModel@{Server\-Model}}
+\subsubsection[{get\-Player\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int Server\-Model\-::get\-Player\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a53887668e0e8193fb345710d76dd12b7}
+Zwraca ilosc grajacych. \hypertarget{classServerModel_a42da33b42e600dfe892509a3e1f04fb0}{\index{Server\-Model@{Server\-Model}!get\-Scores@{get\-Scores}}
+\index{get\-Scores@{get\-Scores}!ServerModel@{Server\-Model}}
+\subsubsection[{get\-Scores}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$int$>$ Server\-Model\-::get\-Scores (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a42da33b42e600dfe892509a3e1f04fb0}
+Zwraca wyniki aktualnie grajacych graczy. \hypertarget{classServerModel_a7b23bfe191a3f618f260c781e5306e57}{\index{Server\-Model@{Server\-Model}!get\-Winner@{get\-Winner}}
+\index{get\-Winner@{get\-Winner}!ServerModel@{Server\-Model}}
+\subsubsection[{get\-Winner}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Player} Server\-Model\-::get\-Winner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a7b23bfe191a3f618f260c781e5306e57}
+Zwraca gracza zwyciezce. \hypertarget{classServerModel_a2ed41cae52af16d5410b0669cce5fc7a}{\index{Server\-Model@{Server\-Model}!move@{move}}
+\index{move@{move}!ServerModel@{Server\-Model}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}bool Server\-Model\-::move (
+\begin{DoxyParamCaption}
+\item[{int}]{dir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a2ed41cae52af16d5410b0669cce5fc7a}
+Ogolna funkcja obslugujaca ruch. \hypertarget{classServerModel_ac12b01ceb25260cee42e4b2f6c5afa00}{\index{Server\-Model@{Server\-Model}!move\-Down@{move\-Down}}
+\index{move\-Down@{move\-Down}!ServerModel@{Server\-Model}}
+\subsubsection[{move\-Down}]{\setlength{\rightskip}{0pt plus 5cm}bool Server\-Model\-::move\-Down (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_ac12b01ceb25260cee42e4b2f6c5afa00}
+Ruch w dol. Zwraca czy nastapil ruch. \hypertarget{classServerModel_a3d33c6ca6db221fb38b12ddcd1b973d7}{\index{Server\-Model@{Server\-Model}!move\-Left@{move\-Left}}
+\index{move\-Left@{move\-Left}!ServerModel@{Server\-Model}}
+\subsubsection[{move\-Left}]{\setlength{\rightskip}{0pt plus 5cm}bool Server\-Model\-::move\-Left (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a3d33c6ca6db221fb38b12ddcd1b973d7}
+Ruch w lewo. Zwraca czy nastapil ruch. \hypertarget{classServerModel_a12a3fcd85eda6068b85401f398ba567f}{\index{Server\-Model@{Server\-Model}!move\-Right@{move\-Right}}
+\index{move\-Right@{move\-Right}!ServerModel@{Server\-Model}}
+\subsubsection[{move\-Right}]{\setlength{\rightskip}{0pt plus 5cm}bool Server\-Model\-::move\-Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a12a3fcd85eda6068b85401f398ba567f}
+Ruch w prawo. Zwraca czy nastapil ruch. \hypertarget{classServerModel_a71bd99e883342592c9f9842c63503044}{\index{Server\-Model@{Server\-Model}!move\-Up@{move\-Up}}
+\index{move\-Up@{move\-Up}!ServerModel@{Server\-Model}}
+\subsubsection[{move\-Up}]{\setlength{\rightskip}{0pt plus 5cm}bool Server\-Model\-::move\-Up (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a71bd99e883342592c9f9842c63503044}
+Ruch w gore. Zwraca czy nastapil ruch. \hypertarget{classServerModel_a30ce9865dba626f3aca22e6355d45a79}{\index{Server\-Model@{Server\-Model}!rand\-Spawn@{rand\-Spawn}}
+\index{rand\-Spawn@{rand\-Spawn}!ServerModel@{Server\-Model}}
+\subsubsection[{rand\-Spawn}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::rand\-Spawn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a30ce9865dba626f3aca22e6355d45a79}
+Losowanie nowego numeru na planszy. \hypertarget{classServerModel_a03636f686c14d807e5f8e7527b4f3eca}{\index{Server\-Model@{Server\-Model}!remove\-Player@{remove\-Player}}
+\index{remove\-Player@{remove\-Player}!ServerModel@{Server\-Model}}
+\subsubsection[{remove\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::remove\-Player (
+\begin{DoxyParamCaption}
+\item[{const int}]{\-\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a03636f686c14d807e5f8e7527b4f3eca}
+Usuwa gracza o podanym id. \hypertarget{classServerModel_a5ccabb0400aff1109578dacfc1162af4}{\index{Server\-Model@{Server\-Model}!reset@{reset}}
+\index{reset@{reset}!ServerModel@{Server\-Model}}
+\subsubsection[{reset}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a5ccabb0400aff1109578dacfc1162af4}
+Reset planszy. \hypertarget{classServerModel_a402b44d30f2b3207154a67db4c28982f}{\index{Server\-Model@{Server\-Model}!reset\-Checks@{reset\-Checks}}
+\index{reset\-Checks@{reset\-Checks}!ServerModel@{Server\-Model}}
+\subsubsection[{reset\-Checks}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::reset\-Checks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a402b44d30f2b3207154a67db4c28982f}
+Reset listy obecnosci. \hypertarget{classServerModel_a7b17b497feec14ba4ea7746f17b479e9}{\index{Server\-Model@{Server\-Model}!reset\-Scores@{reset\-Scores}}
+\index{reset\-Scores@{reset\-Scores}!ServerModel@{Server\-Model}}
+\subsubsection[{reset\-Scores}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::reset\-Scores (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a7b17b497feec14ba4ea7746f17b479e9}
+Reset wyników. \hypertarget{classServerModel_a8f187ffda03256f2aa2679b22399d8ed}{\index{Server\-Model@{Server\-Model}!showboard@{showboard}}
+\index{showboard@{showboard}!ServerModel@{Server\-Model}}
+\subsubsection[{showboard}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::showboard (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a8f187ffda03256f2aa2679b22399d8ed}
+Wyswietla plansze. \hypertarget{classServerModel_af98c5669849c1d648b6103fda3f4a10c}{\index{Server\-Model@{Server\-Model}!switch\-Player@{switch\-Player}}
+\index{switch\-Player@{switch\-Player}!ServerModel@{Server\-Model}}
+\subsubsection[{switch\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::switch\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_af98c5669849c1d648b6103fda3f4a10c}
+Przelaczenie tury na nastepnego gracza. \hypertarget{classServerModel_a84fbe35ac950f1b71da800e14ac85814}{\index{Server\-Model@{Server\-Model}!turn@{turn}}
+\index{turn@{turn}!ServerModel@{Server\-Model}}
+\subsubsection[{turn}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::turn (
+\begin{DoxyParamCaption}
+\item[{const int}]{dir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a84fbe35ac950f1b71da800e14ac85814}
+Wykonanie tury. \hypertarget{classServerModel_a277375b608707d6f6c308f4a8af2e1b7}{\index{Server\-Model@{Server\-Model}!update\-Free\-Tiles@{update\-Free\-Tiles}}
+\index{update\-Free\-Tiles@{update\-Free\-Tiles}!ServerModel@{Server\-Model}}
+\subsubsection[{update\-Free\-Tiles}]{\setlength{\rightskip}{0pt plus 5cm}void Server\-Model\-::update\-Free\-Tiles (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classServerModel_a277375b608707d6f6c308f4a8af2e1b7}
+Aktualizacja wolnych pol. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+Server.\-cpp\end{DoxyCompactItemize}

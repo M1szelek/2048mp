@@ -21,6 +21,8 @@ RCF_END(I_Model)
 
 
 
+/*! Klasa pomocnicza */
+
 class Position {
     
     public:
@@ -34,24 +36,28 @@ class Position {
     
 };
 
+/*! Klasa pojedynczego bloku na planszy */
+
 class Block {
     
     public:
-        int val;
-        bool adv;
+        int val;    /*!< Wartosc bloku */
+        bool adv;   /*!< Czy blok awansowal */
         Block(int val){
             this->val = val;
             this->adv = false;
         }
 };
 
+/*! Klasa gracza */
+
 class Player{
     public:
-        int id;
-        string nick;
-        int score;
-        bool empty;
-        bool check;
+        int id;         /*!< ID gracza */
+        string nick;    /*!< Nick gracza */
+        int score;      /*!< Aktualny wynik gracza */
+        bool empty;     /*!< Czy gracz jest aktywny */
+        bool check;     /*!< Czy gracz sie odmeldowal na serwerze */
 
         Player(string _nick){
             this->nick = _nick;
@@ -64,30 +70,34 @@ class Player{
         }
 };
 
+/*! Klasa glowna modelu */
+
 class Model{
     public:
 
-    int size;
+    int size;   /*!< Wielkosc planszy */
 
-    int currplayer;
-    int maxplayers;
+    int currplayer;     /*!< Aktualny gracz ktory ma ture */
+    int maxplayers;     /*!< Maksymalna ilosc graczy */
 
-    int idcounter;
+    int idcounter;      /*!< Zmienna z ktorej przydzielane sa id dla graczy */
 
-    bool running;
-    bool quit = false;
+    bool running;       /*!< Flaga oznaczajaca przebieg rozgrywki */
+    
 
-    vector< vector<Block> > board;
-    vector<Position> freeTiles;
+    vector< vector<Block> > board;  /*! Plansza */
+    vector<Position> freeTiles;     /*! Wolne pola na planszy */
 
-    vector<Player> players;
-    vector<Player> spectators;
+    vector<Player> players;         /*! Lista graczy */
+    vector<Player> spectators;      /*! Lista widzow */
 };
 
-class ModelServer: public Model{
+/*! Klasa modelu serwera */
+
+class ServerModel: public Model{
     public:
 
-    ModelServer(){
+    ServerModel(){
         srand(time(NULL));
         this->size = 4;
 
@@ -272,6 +282,19 @@ class ModelServer: public Model{
         this->currplayer = 0;
 
         this->running = true;
+
+        this->resetScores();
+    }
+
+    /** 
+     *  Reset wyników.
+     */
+
+
+    void resetScores(){
+        for(int i = 0; i < players.size(); i++){
+            players[i].score = 0;
+        }
     }
 
     /** 
@@ -545,6 +568,7 @@ class ModelServer: public Model{
         if(!checkMove()){
             cout << "Koniec gry! Wygral " << getWinner().nick << endl;
             this->running = false;
+            this->reset();
             
         }
 
@@ -721,7 +745,7 @@ int main()
 
     RCF::RcfInitDeinit rcfInit;
 
-    ModelServer model;
+    ServerModel model;
     RCF::RcfServer server( RCF::TcpEndpoint("0.0.0.0", 50001) );
 
     RCF::ThreadPoolPtr tpPtr( new RCF::ThreadPool(1, 25) );

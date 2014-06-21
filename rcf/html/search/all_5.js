@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['getboard',['getBoard',['../classClientBoard.html#a0be88ab8f9bbf8775dab0ffa28dd624e',1,'ClientBoard::getBoard()'],['../classBoard.html#af9e342842a0b219ecfba8c2c9187b865',1,'Board::getBoard()']]],
-  ['getcurrplayer',['getCurrPlayer',['../classBoard.html#abb55568a079fa7c9d22b87072e47a80d',1,'Board']]],
-  ['getnicks',['getNicks',['../classBoard.html#acb2805f463ec6811a418eeec6614159f',1,'Board']]],
-  ['getplayercount',['getPlayerCount',['../classBoard.html#a61e7c035becfc6e8b3ae38c3e417792a',1,'Board']]],
-  ['getscores',['getScores',['../classBoard.html#a22c26cd978ed6b28a855c8233fc45bde',1,'Board']]],
-  ['getwinner',['getWinner',['../classBoard.html#ab8ac6a56bc3f1d23c17091b247f4846c',1,'Board']]]
+  ['getboard',['getBoard',['../classServerModel.html#a0cdcac1cfe266b4fdaf9b0251a6f6553',1,'ServerModel']]],
+  ['getcurrplayer',['getCurrPlayer',['../classServerModel.html#a02e91f06a02510759b370eefbcb52061',1,'ServerModel']]],
+  ['getnicks',['getNicks',['../classServerModel.html#abd04bc42130f10b6fcf9f6ff96441fe7',1,'ServerModel']]],
+  ['getplayercount',['getPlayerCount',['../classServerModel.html#a53887668e0e8193fb345710d76dd12b7',1,'ServerModel']]],
+  ['getscores',['getScores',['../classServerModel.html#a42da33b42e600dfe892509a3e1f04fb0',1,'ServerModel']]],
+  ['getwinner',['getWinner',['../classServerModel.html#a7b23bfe191a3f618f260c781e5306e57',1,'ServerModel']]]
 ];

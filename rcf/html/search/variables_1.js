@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['board',['board',['../classBoard.html#ab2e62f1012a8a2a0fc4e564819f30e6e',1,'Board::board()'],['../classClientBoard.html#a7014b61049200cd5e271ffb4cda0f890',1,'ClientBoard::board()']]]
+  ['check',['check',['../classPlayer.html#a1b72316124caf757250c3cee1c4416ff',1,'Player']]],
+  ['currplayer',['currplayer',['../classModel.html#a882710d0512c34c6b9b385c8d76825cb',1,'Model']]]
 ];

@@ -21,6 +21,8 @@ RCF_BEGIN(I_Model, "I_Model")
     RCF_METHOD_R0(int, getCurrPlayer)
 RCF_END(I_Model)
 
+/*! Klasa pomocnicza */
+
 class Position {
     
     public:
@@ -34,6 +36,8 @@ class Position {
     
 };
 
+/*! Klasa pojedynczego bloku na planszy */
+
 class Block {
     
     public:
@@ -44,6 +48,8 @@ class Block {
             this->adv = false;
         }
 };
+
+/*! Klasa gracza */
 
 class Player{
     public:
@@ -61,26 +67,29 @@ class Player{
         }
 };
 
+/*! Klasa glowna modelu*/
+
 class Model{
     public:
 
-    int size;
+    int size;   /*!< Wielkosc planszy */
 
-    int currplayer;
-    int maxplayers;
+    int currplayer;     /*!< Aktualny gracz ktory ma ture */
+    int maxplayers;     /*!< Maksymalna ilosc graczy */
 
-    int idcounter;
+    int idcounter;      /*!< Zmienna z ktorej przydzielane sa id dla graczy */
 
-    bool running;
-    bool quit = false;
+    bool running;       /*!< Flaga oznaczajaca przebieg rozgrywki */
+    
 
-    vector< vector<Block> > board;
-    vector<Position> freeTiles;
+    vector< vector<Block> > board;  /*! Plansza */
+    vector<Position> freeTiles;     /*! Wolne pola na planszy */
 
-    vector<Player> players;
-    vector<Player> spectators;
-
+    vector<Player> players;         /*! Lista graczy */
+    vector<Player> spectators;      /*! Lista widzow */
 };
+
+/*! Klasa modelu klienta */
 
 class ClientModel: public Model{
     public:
@@ -102,10 +111,18 @@ class ClientModel: public Model{
         }
     }
 
+    /**  
+     *  Funkcja renderujaca cala aplikacje.
+     */
+
     void render(){
         showBoard();
         showPlayers();
     }
+
+    /**  
+     *  Wyswietla plansze.
+     */
 
     void showBoard() {
         printf("\033[2J\033[1;1H");
@@ -128,6 +145,10 @@ class ClientModel: public Model{
         
     }
 
+    /**  
+     *  Wyswietla liste graczy.
+     */
+
     void showPlayers(){
         cout << endl;
 
@@ -140,20 +161,9 @@ class ClientModel: public Model{
         }
     }
 
-    vector< vector<double> > getBoard(){
-        
-        vector< vector<double> > res;
-
-        for(int i = 0; i < board.size(); i++){
-            vector<double> row;
-            for(int j = 0; j < board.size(); j++){
-                row.push_back(board[i][j].val);
-            }
-            res.push_back(row);
-        }
-        
-        return res;
-    }
+    /**  
+     *  Pobiera aktualny stan planszy z serwera.
+     */
 
     void updateBoard(RcfClient<I_Model> _client){
         vector< vector<double> > newBoard = _client.getBoard(); 
@@ -162,6 +172,10 @@ class ClientModel: public Model{
             for(int j = 0; j < board.size(); j++)
                 this->board[i][j].val = newBoard[i][j];
     }
+
+    /**  
+     *  Pobiera aktualna liste graczy.
+     */
 
     void updatePlayers(RcfClient<I_Model> _client){
         
@@ -178,6 +192,10 @@ class ClientModel: public Model{
         }
     }
 
+    /**  
+     *  
+     */
+
     void process(RcfClient<I_Model> _client){
         this->updateBoard(_client);
         this->updatePlayers(_client);
@@ -190,10 +208,6 @@ bool quit = false;
 bool myTurn = false;
 
 void updateGameStatus(RcfClient<I_Model> _client, ClientModel _Model, Player _myself){
-    //while(!_client.checkMyTurn(_myself.id)){
-    //            RCF::sleepMs(500);
-    //            _Model.process(_client);
-    //}
     try{
         while(!quit){
                     if(_client.checkMyTurn(_myself.id)){
@@ -204,8 +218,9 @@ void updateGameStatus(RcfClient<I_Model> _client, ClientModel _Model, Player _my
         }
     }
     catch(const RCF::Exception & e){
-        std::cout << "Error: " << e.getErrorString() << std::endl;
+        std::cout << "Utracono polaczenie z serwerem!" << std::endl;
         quit = true;
+        exit(1);
     }
 }
 
@@ -213,16 +228,7 @@ void control(RcfClient<I_Model> _client){
     char decision;
     try{
         while (!quit) {
-                
-                //while(!client.checkMyTurn(myself.id)){
-                //    RCF::sleepMs(500);
-                //    Model.process(client);
-                //}
-
-                //Model.process(client);
-
-
-
+            
                 cin >> decision;
 
                 if(quit){
@@ -260,7 +266,7 @@ void control(RcfClient<I_Model> _client){
         }
     }
     catch(const RCF::Exception & e){
-        std::cout << "Error: " << e.getErrorString() << std::endl;
+        std::cout << "Utracono polaczenie z serwerem!" << std::endl;
         quit = true;
     }
 
@@ -313,7 +319,7 @@ int main()
         myself.setId(client_send.addPlayer(myself.nick));
     }catch(const RCF::Exception & e){
         cout << "Nie mozna polaczyc sie z serwerem." << endl;
-        return 0;
+        return 1;
     }
 
     ClientModel model;
@@ -330,7 +336,8 @@ int main()
         client_send.removePlayer(myself.id);
     }
     catch(const RCF::Exception & e){
-        std::cout << "Error: " << e.getErrorString() << std::endl;
+        std::cout << "Brak polaczenia za serwerem!" << std::endl;
+        return 1;
     }
 
     return 0;

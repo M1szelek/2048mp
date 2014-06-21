@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['randspawn',['randSpawn',['../classBoard.html#a292092da6bf7e9d034a253b8badb29ec',1,'Board::randSpawn()'],['../classBoard.html#a292092da6bf7e9d034a253b8badb29ec',1,'Board::randSpawn()']]],
-  ['removeplayer',['removePlayer',['../classBoard.html#ae9693e44c8659fe473d303ec59c8dcf2',1,'Board']]],
-  ['render',['render',['../classClientBoard.html#ad0d1c106e118e4331464bc39480eab3a',1,'ClientBoard']]],
-  ['reset',['reset',['../classBoard.html#aaef819a8d1a10c35d9f802195802236e',1,'Board::reset()'],['../classBoard.html#aaef819a8d1a10c35d9f802195802236e',1,'Board::reset()']]],
-  ['resetchecks',['resetChecks',['../classBoard.html#ac9612f0921f8c6bcada7f00b8542cd6c',1,'Board']]],
-  ['running',['running',['../classBoard.html#ab592d001f61d16b0d272b45d36a78eeb',1,'Board']]]
+  ['score',['score',['../classPlayer.html#ace6abae8d66534ad0a1fd6458f786a6e',1,'Player']]],
+  ['servermodel',['ServerModel',['../classServerModel.html',1,'']]],
+  ['showboard',['showboard',['../classServerModel.html#a8f187ffda03256f2aa2679b22399d8ed',1,'ServerModel::showboard()'],['../classClientModel.html#a437049cfcf845c836ad1f70305146daa',1,'ClientModel::showBoard()']]],
+  ['showplayers',['showPlayers',['../classClientModel.html#a0654ad96265273f41fb296bcf76ecca1',1,'ClientModel']]],
+  ['size',['size',['../classModel.html#a944736812928acb65055f5c7229970ae',1,'Model']]],
+  ['spectators',['spectators',['../classModel.html#a268ae9f01416e04638a2424ee0e457ac',1,'Model']]],
+  ['switchplayer',['switchPlayer',['../classServerModel.html#af98c5669849c1d648b6103fda3f4a10c',1,'ServerModel']]]
 ];

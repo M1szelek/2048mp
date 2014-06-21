@@ -1,15 +1,13 @@
 var searchData=
 [
   ['check',['check',['../classPlayer.html#a1b72316124caf757250c3cee1c4416ff',1,'Player']]],
-  ['checkaliveplayers',['checkAlivePlayers',['../classBoard.html#a969a156e3d2f18e5474d048ac61eefec',1,'Board']]],
-  ['checkendgame',['checkEndGame',['../classBoard.html#af3e095aaddc5a5d42dbce1e9f09613ac',1,'Board']]],
-  ['checkmove',['checkMove',['../classBoard.html#afe79236d857a27b5f41135ab7d314d11',1,'Board']]],
-  ['checkmyturn',['checkMyTurn',['../classBoard.html#a28379792709ccb4bc0fc1c37f1788b57',1,'Board']]],
-  ['checkoccupy',['checkOccupy',['../classBoard.html#ac66859886670f6412ae98fe376d1869e',1,'Board']]],
-  ['checkplayer',['checkPlayer',['../classBoard.html#a22e356fce939f31b3a5b37d4c6e00fdb',1,'Board']]],
-  ['clearadv',['clearAdv',['../classBoard.html#a43d0ddf4bb8fb210425cb3e3d335ee91',1,'Board::clearAdv()'],['../classBoard.html#a43d0ddf4bb8fb210425cb3e3d335ee91',1,'Board::clearAdv()']]],
-  ['client_2ecpp',['Client.cpp',['../Client_8cpp.html',1,'']]],
-  ['clientboard',['ClientBoard',['../classClientBoard.html',1,'ClientBoard'],['../classClientBoard.html#a337e3faf170defc4c3aba5496fdec9b9',1,'ClientBoard::ClientBoard()']]],
-  ['control',['control',['../classBoard.html#a438f522b92c76c5de5e14e6ea1eebb25',1,'Board::control()'],['../Client_8cpp.html#a30d4bcd60d7a49ee416d58dec1bf20a4',1,'control():&#160;Client.cpp']]],
-  ['currplayer',['currplayer',['../classClientBoard.html#a1c82f70c45cae36e7c2c9d6a148c86a6',1,'ClientBoard::currplayer()'],['../classBoard.html#abaa4fa9dc0aa30ff340ae3a3603bfe89',1,'Board::currplayer()']]]
+  ['checkaliveplayers',['checkAlivePlayers',['../classServerModel.html#aedccd8017caa1e8a9ed5a323d19d424e',1,'ServerModel']]],
+  ['checkendgame',['checkEndGame',['../classServerModel.html#a0f9e52d858f03acff61df4ec297fbc87',1,'ServerModel']]],
+  ['checkmove',['checkMove',['../classServerModel.html#acb1a12dd3af4d4ae84ce6a76742bc5b0',1,'ServerModel']]],
+  ['checkmyturn',['checkMyTurn',['../classServerModel.html#ab4cf786672a46e6285eb72907005ae64',1,'ServerModel']]],
+  ['checkoccupy',['checkOccupy',['../classServerModel.html#addd72dd4e20c62633121da9e75907cf0',1,'ServerModel']]],
+  ['checkplayer',['checkPlayer',['../classServerModel.html#a155230e9bb8373cfe4eaedbb87b05c0c',1,'ServerModel']]],
+  ['clearadv',['clearAdv',['../classServerModel.html#ad3b7678f205acbf9a6efe65ba60cfd73',1,'ServerModel']]],
+  ['clientmodel',['ClientModel',['../classClientModel.html',1,'']]],
+  ['currplayer',['currplayer',['../classModel.html#a882710d0512c34c6b9b385c8d76825cb',1,'Model']]]
 ];

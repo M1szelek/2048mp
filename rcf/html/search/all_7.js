@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['main',['main',['../board_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;board.cpp'],['../Client_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;Client.cpp'],['../Server_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;Server.cpp']]],
-  ['maxplayers',['maxplayers',['../classBoard.html#a74cbb7000280715ac9ba9b71cee88d7b',1,'Board']]],
-  ['move',['move',['../classBoard.html#a8ff148a0bc62644e38fd0e4dc62e6aa8',1,'Board']]],
-  ['movedown',['moveDown',['../classBoard.html#a37e2291db8ee17dd063bc858e97043d4',1,'Board::moveDown()'],['../classBoard.html#a60a65f6aea6073ce6140537f3999a07c',1,'Board::moveDown()']]],
-  ['moveleft',['moveLeft',['../classBoard.html#a331b8563869f8ddd6a086f7b254f91ba',1,'Board::moveLeft()'],['../classBoard.html#a1517b03dc55270808428a671ea65f16b',1,'Board::moveLeft()']]],
-  ['moveright',['moveRight',['../classBoard.html#a9587b11000f09b594bc005f85354fa70',1,'Board::moveRight()'],['../classBoard.html#a908e8252a3ec8fd89063d3336992b265',1,'Board::moveRight()']]],
-  ['moveup',['moveUp',['../classBoard.html#a767dee32f9ceb1f7d83bdd75e4b3564b',1,'Board::moveUp()'],['../classBoard.html#a12ed975322d7b6a9ca26cf2b465a510b',1,'Board::moveUp()']]],
-  ['myturn',['myTurn',['../Client_8cpp.html#a0b810b6b0ea4898d29d31728e4574ecc',1,'Client.cpp']]]
+  ['maxplayers',['maxplayers',['../classModel.html#aa90bb7e95e18111d59df116fcabbdd89',1,'Model']]],
+  ['model',['Model',['../classModel.html',1,'']]],
+  ['move',['move',['../classServerModel.html#a2ed41cae52af16d5410b0669cce5fc7a',1,'ServerModel']]],
+  ['movedown',['moveDown',['../classServerModel.html#ac12b01ceb25260cee42e4b2f6c5afa00',1,'ServerModel']]],
+  ['moveleft',['moveLeft',['../classServerModel.html#a3d33c6ca6db221fb38b12ddcd1b973d7',1,'ServerModel']]],
+  ['moveright',['moveRight',['../classServerModel.html#a12a3fcd85eda6068b85401f398ba567f',1,'ServerModel']]],
+  ['moveup',['moveUp',['../classServerModel.html#a71bd99e883342592c9f9842c63503044',1,'ServerModel']]]
 ];

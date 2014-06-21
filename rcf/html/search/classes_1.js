@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['clientboard',['ClientBoard',['../classClientBoard.html',1,'']]]
+  ['clientmodel',['ClientModel',['../classClientModel.html',1,'']]]
 ];

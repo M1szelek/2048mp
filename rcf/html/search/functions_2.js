@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['checkaliveplayers',['checkAlivePlayers',['../classBoard.html#a969a156e3d2f18e5474d048ac61eefec',1,'Board']]],
-  ['checkendgame',['checkEndGame',['../classBoard.html#af3e095aaddc5a5d42dbce1e9f09613ac',1,'Board']]],
-  ['checkmove',['checkMove',['../classBoard.html#afe79236d857a27b5f41135ab7d314d11',1,'Board']]],
-  ['checkmyturn',['checkMyTurn',['../classBoard.html#a28379792709ccb4bc0fc1c37f1788b57',1,'Board']]],
-  ['checkoccupy',['checkOccupy',['../classBoard.html#ac66859886670f6412ae98fe376d1869e',1,'Board']]],
-  ['checkplayer',['checkPlayer',['../classBoard.html#a22e356fce939f31b3a5b37d4c6e00fdb',1,'Board']]],
-  ['clearadv',['clearAdv',['../classBoard.html#a43d0ddf4bb8fb210425cb3e3d335ee91',1,'Board::clearAdv()'],['../classBoard.html#a43d0ddf4bb8fb210425cb3e3d335ee91',1,'Board::clearAdv()']]],
-  ['clientboard',['ClientBoard',['../classClientBoard.html#a337e3faf170defc4c3aba5496fdec9b9',1,'ClientBoard']]],
-  ['control',['control',['../classBoard.html#a438f522b92c76c5de5e14e6ea1eebb25',1,'Board::control()'],['../Client_8cpp.html#a30d4bcd60d7a49ee416d58dec1bf20a4',1,'control():&#160;Client.cpp']]]
+  ['getboard',['getBoard',['../classServerModel.html#a0cdcac1cfe266b4fdaf9b0251a6f6553',1,'ServerModel']]],
+  ['getcurrplayer',['getCurrPlayer',['../classServerModel.html#a02e91f06a02510759b370eefbcb52061',1,'ServerModel']]],
+  ['getnicks',['getNicks',['../classServerModel.html#abd04bc42130f10b6fcf9f6ff96441fe7',1,'ServerModel']]],
+  ['getplayercount',['getPlayerCount',['../classServerModel.html#a53887668e0e8193fb345710d76dd12b7',1,'ServerModel']]],
+  ['getscores',['getScores',['../classServerModel.html#a42da33b42e600dfe892509a3e1f04fb0',1,'ServerModel']]],
+  ['getwinner',['getWinner',['../classServerModel.html#a7b23bfe191a3f618f260c781e5306e57',1,'ServerModel']]]
 ];
