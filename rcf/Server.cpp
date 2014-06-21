@@ -15,6 +15,7 @@ RCF_BEGIN(I_Model, "I_Model")
     RCF_METHOD_R1(bool, checkMyTurn, const int &)
     RCF_METHOD_R0(vector<string>, getNicks)
     RCF_METHOD_R0(vector<int>, getScores)
+    RCF_METHOD_R0(vector<int>, getWins)
     RCF_METHOD_R0(int, getPlayerCount)
     RCF_METHOD_R0(int, getCurrPlayer)
 RCF_END(I_Model)
@@ -58,11 +59,13 @@ class Player{
         int score;      /*!< Aktualny wynik gracza */
         bool empty;     /*!< Czy gracz jest aktywny */
         bool check;     /*!< Czy gracz sie odmeldowal na serwerze */
+        int wins;       /*!< Ilosc zwyciestw */
 
         Player(string _nick){
             this->nick = _nick;
             score = 0;
             empty = false;
+            wins = 0;
         }
 
         void setId(int val){
@@ -139,6 +142,8 @@ class ServerModel: public Model{
                 }else{
                     players[i].nick = _nick;
                     players[i].empty = false;
+                    players[i].wins = 0;
+                    players[i].score = 0;
                     cout << newPlayer.nick << " dolacza do gry" << endl;
                 }
                 return players[i].id;
@@ -207,6 +212,20 @@ class ServerModel: public Model{
 
         for(int i = 0; i < players.size(); i++){
             res.push_back(players[i].score);
+        }
+
+        return res;
+    }
+
+    /** 
+     *  Zwraca ilosc zwyciestw aktualnie grajacych graczy.
+     */
+
+    vector<int> getWins(){
+        vector<int> res;
+
+        for(int i = 0; i < players.size(); i++){
+            res.push_back(players[i].wins);
         }
 
         return res;
@@ -564,13 +583,14 @@ class ServerModel: public Model{
      *  Sprawdza koniec gry.
      */
 
-    void checkEndGame(){
+    bool checkEndGame(){
         if(!checkMove()){
             cout << "Koniec gry! Wygral " << getWinner().nick << endl;
-            this->running = false;
-            this->reset();
+            return true;
             
         }
+
+        return false;
 
         
     }
@@ -590,7 +610,21 @@ class ServerModel: public Model{
             }
         }
 
+        addWin(winner);
+
         return winner;
+    }
+
+    /** 
+     *  Dodanie zwyciestwa dla gracza.
+     */
+
+    void addWin(Player player){
+        for(int i = 0; i < players.size(); i++){
+            if(players[i].id == player.id){
+                players[i].wins++;
+            } 
+        }
     }
 
 //  void spawn(int x, int y, int val) {
@@ -617,8 +651,11 @@ class ServerModel: public Model{
      */
 
     void turn(const int dir){
-        
-        checkEndGame();
+
+        if(checkEndGame()){
+            this->reset();
+            return;
+        }
 
         if(move(dir) && this->running){
             randSpawn();

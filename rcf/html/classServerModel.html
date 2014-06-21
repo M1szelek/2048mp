@@ -107,6 +107,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abd04bc42130f10b6fcf9f6ff96441fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42da33b42e600dfe892509a3e1f04fb0"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#a42da33b42e600dfe892509a3e1f04fb0">getScores</a> ()</td></tr>
 <tr class="separator:a42da33b42e600dfe892509a3e1f04fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0514ab9d46c5935d47332616313128f2"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#a0514ab9d46c5935d47332616313128f2">getWins</a> ()</td></tr>
+<tr class="separator:a0514ab9d46c5935d47332616313128f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53887668e0e8193fb345710d76dd12b7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#a53887668e0e8193fb345710d76dd12b7">getPlayerCount</a> ()</td></tr>
 <tr class="separator:a53887668e0e8193fb345710d76dd12b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02e91f06a02510759b370eefbcb52061"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#a02e91f06a02510759b370eefbcb52061">getCurrPlayer</a> ()</td></tr>
@@ -135,10 +137,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:addd72dd4e20c62633121da9e75907cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb1a12dd3af4d4ae84ce6a76742bc5b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#acb1a12dd3af4d4ae84ce6a76742bc5b0">checkMove</a> ()</td></tr>
 <tr class="separator:acb1a12dd3af4d4ae84ce6a76742bc5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f9e52d858f03acff61df4ec297fbc87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#a0f9e52d858f03acff61df4ec297fbc87">checkEndGame</a> ()</td></tr>
-<tr class="separator:a0f9e52d858f03acff61df4ec297fbc87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47fa5be84ddb9fe8095834d337d2dbff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#a47fa5be84ddb9fe8095834d337d2dbff">checkEndGame</a> ()</td></tr>
+<tr class="separator:a47fa5be84ddb9fe8095834d337d2dbff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b23bfe191a3f618f260c781e5306e57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPlayer.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#a7b23bfe191a3f618f260c781e5306e57">getWinner</a> ()</td></tr>
 <tr class="separator:a7b23bfe191a3f618f260c781e5306e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3807bd9a40d361847ea0d1849f7fefc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#ad3807bd9a40d361847ea0d1849f7fefc">addWin</a> (<a class="el" href="classPlayer.html">Player</a> player)</td></tr>
+<tr class="separator:ad3807bd9a40d361847ea0d1849f7fefc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ed41cae52af16d5410b0669cce5fc7a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#a2ed41cae52af16d5410b0669cce5fc7a">move</a> (int dir)</td></tr>
 <tr class="separator:a2ed41cae52af16d5410b0669cce5fc7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84fbe35ac950f1b71da800e14ac85814"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServerModel.html#a84fbe35ac950f1b71da800e14ac85814">turn</a> (const int dir)</td></tr>
@@ -207,6 +211,31 @@ vector&lt; vector&lt; <a class="el" href="classBlock.html">Block</a> &gt; &gt;&#
 
 </div>
 </div>
+<a class="anchor" id="ad3807bd9a40d361847ea0d1849f7fefc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServerModel::addWin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classPlayer.html">Player</a>&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Dodanie zwyciestwa dla gracza. </p>
+
+</div>
+</div>
 <a class="anchor" id="aedccd8017caa1e8a9ed5a323d19d424e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -231,7 +260,7 @@ vector&lt; vector&lt; <a class="el" href="classBlock.html">Block</a> &gt; &gt;&#
 
 </div>
 </div>
-<a class="anchor" id="a0f9e52d858f03acff61df4ec297fbc87"></a>
+<a class="anchor" id="a47fa5be84ddb9fe8095834d337d2dbff"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -239,7 +268,7 @@ vector&lt; vector&lt; <a class="el" href="classBlock.html">Block</a> &gt; &gt;&#
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ServerModel::checkEndGame </td>
+          <td class="memname">bool ServerModel::checkEndGame </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -518,6 +547,30 @@ vector&lt; vector&lt; <a class="el" href="classBlock.html">Block</a> &gt; &gt;&#
 </table>
 </div><div class="memdoc">
 <p>Zwraca gracza zwyciezce. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0514ab9d46c5935d47332616313128f2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;int&gt; ServerModel::getWins </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Zwraca ilosc zwyciestw aktualnie grajacych graczy. </p>
 
 </div>
 </div>
@@ -866,7 +919,7 @@ vector&lt; vector&lt; <a class="el" href="classBlock.html">Block</a> &gt; &gt;&#
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 21 2014 18:03:41 for 2048 Multiplayer by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 21 2014 18:46:35 for 2048 Multiplayer by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

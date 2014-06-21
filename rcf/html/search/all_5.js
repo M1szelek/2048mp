@@ -5,5 +5,6 @@ var searchData=
   ['getnicks',['getNicks',['../classServerModel.html#abd04bc42130f10b6fcf9f6ff96441fe7',1,'ServerModel']]],
   ['getplayercount',['getPlayerCount',['../classServerModel.html#a53887668e0e8193fb345710d76dd12b7',1,'ServerModel']]],
   ['getscores',['getScores',['../classServerModel.html#a42da33b42e600dfe892509a3e1f04fb0',1,'ServerModel']]],
-  ['getwinner',['getWinner',['../classServerModel.html#a7b23bfe191a3f618f260c781e5306e57',1,'ServerModel']]]
+  ['getwinner',['getWinner',['../classServerModel.html#a7b23bfe191a3f618f260c781e5306e57',1,'ServerModel']]],
+  ['getwins',['getWins',['../classServerModel.html#a0514ab9d46c5935d47332616313128f2',1,'ServerModel']]]
 ];

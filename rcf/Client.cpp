@@ -17,6 +17,7 @@ RCF_BEGIN(I_Model, "I_Model")
     RCF_METHOD_R1(bool, checkMyTurn, const int &)
     RCF_METHOD_R0(vector<string>, getNicks)
     RCF_METHOD_R0(vector<int>, getScores)
+    RCF_METHOD_R0(vector<int>, getWins)
     RCF_METHOD_R0(int, getPlayerCount)
     RCF_METHOD_R0(int, getCurrPlayer)
 RCF_END(I_Model)
@@ -56,10 +57,12 @@ class Player{
         int id;
         string nick;
         int score;
+        int wins;
 
-        Player(string _nick, int _score){
+        Player(string _nick, int _score, int _wins){
             this->nick = _nick;
             this->score = _score;
+            this->wins = _wins;
         }
 
         void setId(int val){
@@ -154,9 +157,9 @@ class ClientModel: public Model{
 
         for(int i = 0; i < players.size(); i++){
             if(currplayer == i){
-                cout << players[i].nick << ":\t" << players[i].score << " <<<" << endl;
+                cout << players[i].nick << ":\t" << players[i].score << "\t" << players[i].wins << " <<<" << endl;
             }else{
-                cout << players[i].nick << ":\t" << players[i].score << endl;
+                cout << players[i].nick << ":\t" << players[i].score << "\t" << players[i].wins << endl;
             }
         }
     }
@@ -183,18 +186,15 @@ class ClientModel: public Model{
 
         vector<string> nicks = _client.getNicks();
         vector<int> scores = _client.getScores();
+        vector<int> wins = _client.getWins();
         int count = _client.getPlayerCount();
         this->currplayer = _client.getCurrPlayer();
 
         for(int i = 0; i < count; i++){
-            Player _player(nicks[i],scores[i]);
+            Player _player(nicks[i],scores[i],wins[i]);
             players.push_back(_player);
         }
     }
-
-    /**  
-     *  
-     */
 
     void process(RcfClient<I_Model> _client){
         this->updateBoard(_client);
@@ -313,7 +313,7 @@ int main()
     client_send.getClientStub().setRemoteCallTimeoutMs(60*1000);
     client_recv.getClientStub().setRemoteCallTimeoutMs(60*1000);
 
-    Player myself(nick,0);
+    Player myself(nick,0,0);
 
     try{
         myself.setId(client_send.addPlayer(myself.nick));
